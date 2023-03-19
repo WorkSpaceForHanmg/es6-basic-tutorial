@@ -1,6 +1,6 @@
 ## 1. ES7(2016)
 #### 1) Array.prototype.includes() 
-* [includes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+* [mdn: includes() function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
 * 배열 내에 값이 있는지 없는지 확인   
 * 값이 있으면 true, 없으면 false 를 반환   
 ```js
@@ -35,7 +35,7 @@ console.log(b); //27
 ## 2. ES8(2017)
 #### 1) Async & Await
 ES2017에서 async 와 await의 추가로 Promise Chaining을 마치 동기적인 코드를 작성하듯이 비동기 로직을 쓸 수 있게 되었다.   
-[mdn: async function](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)
+[mdn: async function](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)   
 [mdn: await function](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await)   
 
 **using Promise Chaining**
