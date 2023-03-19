@@ -97,7 +97,7 @@ console.log('abc'.padEnd(1));           // "abc"
 Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환한다   
 모든 프로퍼티의 디스크립터인 value, writable, enumerable, configurable 을 반환한다.
 
-[mdn : getOwnPropertyDescriptors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors)
+[mdn : getOwnPropertyDescriptors()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors)
 ```js
 const person = {
   name: "Dooly",
@@ -256,7 +256,8 @@ console.log(fromEntries);
 */
 ```
 #### 4) String.prototype.trimStart()/trimEnd()
-문자열의 앞 , 뒤 공백을 제거해줌. trimStart는 trimLeft로, trimEnd는 trimRight라는 별칭으로 쓸 수 있음.   
+문자열의 앞, 뒤 공백을 제거해 준다.   
+trimStart는 trimLeft로, trimEnd는 trimRight라는 별칭으로 쓸 수 있음.   
 ```js
 const greeting = '   Hello world!   ';
 console.log(greeting.trimStart());
@@ -265,7 +266,9 @@ console.log(greeting.trimEnd());
 // expected output: '   Hello world!';
 ```
 #### 5) Array.prototype.flat()
-flat() 메서드는 모든 하위 배열 요소를 지정한 깊이까지 재귀적으로 이어붙인 새로운 배열을 생성합니다. 또한 배열의 구멍도 제거함
+flat() 메서드는 모든 하위 배열 요소를 지정한 깊이까지 재귀적으로 이어붙인 새로운 배열을 생성합니다. 
+[mdn : flat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+
 ```js
 const arr1 = [1, 2, [3, 4]];
 console.log(arr1.flat());
@@ -277,7 +280,7 @@ console.log(arr2.flat());
 
 const arr3 = [1, 2, [3, 4, [5, 6]]];
 console.log(arr3.flat(2));
-// [1, 2, 3, 4, 5, 6]
+//flat(depth) [1, 2, 3, 4, 5, 6]
 
 const arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
 console.log(arr4.flat(Infinity));
@@ -288,10 +291,13 @@ console.log(arr5.flat());
 // [1, 2, 4, 5]
 ```
 #### 6) Array.prototype.flatMap()
-flatMap()은 flat와 Map 함수를 합친 것이다. 먼저 배열의 각 엘리먼트에 map 수행 후 위에 flat을 수행한다.   
+flatMap()은 flat와 Map 함수를 합친 것이다. 먼저 배열의 각 엘리먼트에 map 수행 한 후에 flat을 수행한다.   
+[mdn : flatMap()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)   
+
 ```js
 let arr1 = [1, 2, 3, 4];
 
+//map() vs flatMa()
 console.log(arr1.map(x => [x * 2]));
 // [[2], [4], [6], [8]]
 
@@ -302,7 +308,6 @@ console.log(arr1.flatMap(x => [x * 2]));
 console.log(arr1.flatMap(x => [[x * 2]]));
 // [[2], [4], [6], [8]]
 ```
-
 ## 5. ES11(2020)
 #### 1) Optional chaining
 참조를 할 때 값이 있는 지 없는 지 검증할 때 Optional chaining을 쓰면 참조가 null or undefined일 때 에러 대신 undefined를 반환해 준다.   
@@ -357,25 +362,23 @@ printClass(person2); //undefined
 ```
 #### 2) Nullish coalescing Operator
 주로 기본값을 할당할 떄 || 연산자를 활용했음 ! BUT, 0,' ' 같은 값들이 들어갈 때 의도대로 작동하지 않을 수 있음   
+[mdn: nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
 ```js
-//사용자는 익명을 원함
-const name =' '
+const name =""
 const userName = name || 'Guest';
 console.log(userName); //Guest
 
-//사용자는 0 이라는 메시지를 원함
 const num = 0;
 const message = num || 'undefined';
 console.log(message); //undefined
 ```
-Nullish coalescing Operator를 이용하면 값이 Null 이나 undefined인 경우에만 기본 값을 할당해줄 수 있다. or 연산자 보다는 Nullish coalescing Operator를 사용하자.   
+nullish coalescing operator를 이용하면 값이 null 이나 undefined인 경우에만 기본 값을 할당해 줄 수 있다.   
+or 연산자 보다는 Nullish coalescing Operator를 사용하자.   
 ```js
-//사용자는 익명을 원함
-const name =' '
+const name =""
 const userName = name ?? 'Guest';
-console.log(userName); //
+console.log(userName); // ""
 
-//사용자는 0이라는 메시지를 원함
 const num = 0;
 const message = num ?? 'undefined';
 console.log(message); // 0
