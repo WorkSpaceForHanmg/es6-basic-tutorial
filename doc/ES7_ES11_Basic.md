@@ -1,8 +1,8 @@
 ## 1. ES7(2016)
 #### 1) Array.prototype.includes() 
 * [includes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
-배열 내에 값이 있는지 없는지 확인   
-값이 있으면 true, 없으면 false 를 반환   
+* 배열 내에 값이 있는지 없는지 확인   
+* 값이 있으면 true, 없으면 false 를 반환   
 ```js
 console.log([1, 2, 3].includes(2)); //true
 console.log([1, 2, 3].includes(4)); //false
