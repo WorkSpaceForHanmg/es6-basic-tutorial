@@ -33,7 +33,28 @@ b **= 3;
 console.log(b); //27
 ```
 ## 2. ES8(2017)
-#### 1) Object.values / Object.entries
+#### 1) Async & Await
+ES2017에서 async 와 await의 추가로 Promise Chaining을 마치 동기적인 코드를 작성하듯이 비동기 로직을 쓸 수 있게 되었다.   
+**using Promise Chaining**
+```js
+function printMyInfo(userId) {
+  fetch(`https://api.github.com/users/${userId}`)
+    .then((res) => res.json())
+    .then((res) => console.log(res));
+}
+printMyInfo(id);
+```
+**using async await**
+```js
+async function printMyInfo(userId) {
+  let response = await fetch(`https://api.github.com/users/${userId}`);
+  response = await response.json();
+  console.log(response);
+}
+printMyInfo(id);
+```
+함수 앞에 async라는 키워드와 응답을 기다리는 부분에 await이라는 키워드를 사용하여 마치 동기적인 코드를 작성 하듯이 쓸 수 있게 되었다.   
+#### 2) Object.values / Object.entries
 values 매소드는 객체 내 모든 value 값들을 배열 형태로 반환   
 entries 메소드는 객체 내 key,value를 묶어서 배열 형태로 반환   
 ```js
@@ -46,7 +67,7 @@ const person = {
 console.log(Object.values(person)); //["Dooly", 18, 4] 
 console.log(Object.entries(person));//[["name", "Dooly"], ["age", 18], ["class", 4]] 
 ```
-#### 2) String Padding
+#### 3) String Padding
 문자열에 여백 or 문자를 추가할 수 있는 메소드 padStart , padEnd   
 ```js
 let name = 'Hello';
@@ -70,10 +91,10 @@ console.log('abc'.padEnd(10, "foo"));   // "abcfoofoof"
 console.log('abc'.padEnd(6, "123456")); // "abc123"
 console.log('abc'.padEnd(1));           // "abc"
 ```
-#### 3) Object.getOwnPropertyDescriptors
+#### 4) Object.getOwnPropertyDescriptors
 기존에 존재하던 Object.getOwnPropertyDescriptor에 s가 붙음   
 기존 Object.getOwnPropertyDescriptor는 객체와 속성명을 인자로 받아서 해당 속성의 속성 설명자를 반환   
-Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환   
+Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환하며 해당 속성이 없으면 빈 객체를 반환한다.
 
 ```js
 const person = {
@@ -140,28 +161,6 @@ f(p,);
 Math.max(10, 20);
 Math.max(10, 20,);
 ```
-#### 5) Async & Await
-ES2017에서 async 와 await의 추가로 Promise Chaining을 마치 동기적인 코드를 작성하듯이 비동기 로직을 쓸 수 있게 되었다.   
-**using Promise Chaining**
-```js
-function printMyInfo(userId) {
-  fetch(`https://api.github.com/users/${userId}`)
-    .then((res) => res.json())
-    .then((res) => console.log(res));
-}
-printMyInfo(id);
-```
-**using async await**
-```js
-async function printMyInfo(userId) {
-  let response = await fetch(`https://api.github.com/users/${userId}`);
-  response = await response.json();
-  console.log(response);
-}
-printMyInfo(id);
-```
-함수 앞에 async라는 키워드와 응답을 기다리는 부분에 await이라는 키워드를 사용하여 마치 동기적인 코드를 작성 하듯이 쓸 수 있게 되었다.   
-
 ## 3. ES9(2018) 
 #### 1) Rest/Spread Properties(객체 리터럴에서의 전개)
 객체 리터럴에서도 전개 구문이 가능해 졌다. 전개구문이란 배열이나 문자열과 같은 iterable(반복 가능)한 Object를 전개하는 것이다.   
