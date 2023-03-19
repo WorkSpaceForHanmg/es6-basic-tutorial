@@ -94,8 +94,10 @@ console.log('abc'.padEnd(1));           // "abc"
 #### 4) Object.getOwnPropertyDescriptors
 기존에 존재하던 Object.getOwnPropertyDescriptor에 s가 붙음   
 기존 Object.getOwnPropertyDescriptor는 객체와 속성명을 인자로 받아서 해당 속성의 속성 설명자를 반환   
-Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환하며 해당 속성이 없으면 빈 객체를 반환한다.
-[getOwnPropertyDescriptors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors)
+Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환한다.
+모든 프로퍼티의 디스크립터인 value, writable, enumerable, configurable 을 반환한다.
+
+[mdn : getOwnPropertyDescriptors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors)
 ```js
 const person = {
   name: "Dooly",
@@ -136,7 +138,7 @@ console.log(Object.getOwnPropertyDescriptors(person));
 */
 ```
 #### 4) Trailing commas(final commas)
-javascript는 초기부터 배열에 final commas가 허용 되었다. ES8부터는 함수의 매개변수에도 허용 되었다.   
+javascript는 초기 부터 배열에 final commas가 허용 되었다. ES8부터는 함수의 매개변수에도 허용 되었다.   
 (단 JSON에서는 허용되지 않음)   
 final commas를 쓰면 새로운 엘리먼트, 매개변수, 속성을 추가할 때 유용하고 수정 없이 복사해서 쓸 수 있음   
 이 외에도 버전 관리 이력이 간단하고 코드 편집이 더 편해진다는 장점이 있습니다.   
