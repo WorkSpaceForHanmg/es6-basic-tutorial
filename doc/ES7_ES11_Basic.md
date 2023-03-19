@@ -95,7 +95,7 @@ console.log('abc'.padEnd(1));           // "abc"
 기존에 존재하던 Object.getOwnPropertyDescriptor에 s가 붙음   
 기존 Object.getOwnPropertyDescriptor는 객체와 속성명을 인자로 받아서 해당 속성의 속성 설명자를 반환   
 Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환하며 해당 속성이 없으면 빈 객체를 반환한다.
-
+[getOwnPropertyDescriptors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors)
 ```js
 const person = {
   name: "Dooly",
