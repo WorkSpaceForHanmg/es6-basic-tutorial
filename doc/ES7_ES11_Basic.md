@@ -94,7 +94,7 @@ console.log('abc'.padEnd(1));           // "abc"
 #### 4) Object.getOwnPropertyDescriptors
 기존에 존재하던 Object.getOwnPropertyDescriptor에 s가 붙음   
 기존 Object.getOwnPropertyDescriptor는 객체와 속성명을 인자로 받아서 해당 속성의 속성 설명자를 반환   
-Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환한다.
+Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환한다   
 모든 프로퍼티의 디스크립터인 value, writable, enumerable, configurable 을 반환한다.
 
 [mdn : getOwnPropertyDescriptors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors)
