@@ -166,6 +166,7 @@ Math.max(10, 20,);
 ## 3. ES9(2018) 
 #### 1) Rest/Spread Properties(객체 리터럴에서의 전개)
 객체 리터럴에서도 전개 구문이 가능해 졌다. 전개구문이란 배열이나 문자열과 같은 iterable(반복 가능)한 Object를 전개하는 것이다.   
+배열에서 사용되던 rest/spread 문법이 객체에서도 사용 가능하게 되었다.   
 ```js
 const num =[1,2,3]
 console.log(...num) //1 2 3
@@ -241,9 +242,18 @@ const person = {
   class: 4,
 };
 const entries = Object.entries(person);
-console.log(entries);
+console.log(entries);  
+//[["name", "Dooly"], ["age", 18], ["class", 4]]
+
 const fromEntries = Object.fromEntries(entries);
 console.log(fromEntries);
+/*
+[object Object] {
+  age: 18,
+  class: 4,
+  name: "Dooly"
+}
+*/
 ```
 #### 4) String.prototype.trimStart()/trimEnd()
 문자열의 앞 , 뒤 공백을 제거해줌. trimStart는 trimLeft로, trimEnd는 trimRight라는 별칭으로 쓸 수 있음.   
