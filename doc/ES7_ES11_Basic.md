@@ -35,6 +35,9 @@ console.log(b); //27
 ## 2. ES8(2017)
 #### 1) Async & Await
 ES2017에서 async 와 await의 추가로 Promise Chaining을 마치 동기적인 코드를 작성하듯이 비동기 로직을 쓸 수 있게 되었다.   
+[mdn: async function](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)
+[mdn: await function](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await)   
+
 **using Promise Chaining**
 ```js
 function printMyInfo(userId) {
@@ -386,7 +389,7 @@ console.log(message); // 0
 
 #### 3) globalThis
 기존에는 js 실행환경에 따라서 global 객체에 접근하느 방법이 달랐음   
-브라우저에서는 window,self,frame 사용, 노드에서는 global, Web Worker*(Web Worker는 script 실행을 메인 쓰레드가 아니라 백그라운드 쓰레드에서 실행할 수 있도록 해주는 기술 입니다.)에서는 self를 통해서 접근했었음.*   
+브라우저에서는 window, self, frame 사용, Node에서는 global, Web Worker(Web Worker는 script 실행을 메인 쓰레드가 아니라 백그라운드 쓰레드에서 실행할 수 있도록 해주는 기술 입니다.)에서는 self를 통해서 접근 했었음.     
 globalThis를 이용하면 모든 환경에서 접근 가능하다.   
 ```js
 // 브라우저 실행 환경 기준
@@ -403,7 +406,8 @@ console.log(p.replaceAll('dog', 'monkey'));
 //"The quick brown fox jumps over the lazy monkey. If the monkey reacted, was it really lazy?"
 ```
 #### 2) Promise.any()
-어떤 promise 하나라도 resolve 되면 resovle 된다.   
+여러개의 promise 중에서 하나라도 resolve 되면 resovle 되어진다.   
+[mdn : Promise.any()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
 ```js
 const promise1 = Promise.reject(0);
 const promise2 = new Promise((resolve) => setTimeout(resolve, 100, 'quick'));
@@ -415,13 +419,24 @@ Promise.any(promises).then((value) => console.log(value)); //"quick"
 ```
 #### 3) Logical assignment operators
 (??, &&,||) 도 a += 2 처럼 할당 연산자 사용 가능하다.   
+[mdn: Logical OR assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment)
 ```js
 expr1 ||= expr2 // expr1 || expr2
 expr1 &&= expr2 // expr1 && expr2
 expr1 ??= expr2 // expr1 ?? expr2
+
+const a = { duration: 0, title: '' };
+
+a.duration ||= 10;
+console.log(a.duration);
+// Expected output: 10
+
+a.title ||= 'title is empty.';
+console.log(a.title);
+// Expected output: "title is empty"
 ```
 #### 4) Separators for numeric literals
-이제 큰 숫자 구분을 _를 이용하여 가능하다.
+이제 큰 숫자 구분을 _를 사용 할 수 있다.
 ```js
 const number = 1_000_000;
 const money = 1_000_000.123_456;
