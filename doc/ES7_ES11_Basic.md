@@ -1,0 +1,416 @@
+## 1. ES7(2016)
+#### 1) Array.prototype.includes() 
+[includes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+배열 내에 값이 있는지 없는지 확인   
+값이 있으면 true, 없으면 false 를 반환   
+```js
+console.log([1, 2, 3].includes(2)); //true
+console.log([1, 2, 3].includes(4)); //false
+
+console.log([1, 2, NaN].includes(NaN)); //true
+
+console.log([1, 2, -0].includes(+0)); //true
+console.log([1, 2, +0].includes(-0)); //true
+
+console.log(["a", "b", "c"].includes("a")); //true
+console.log(["a", "b", "c"].includes("a", 0)); //false
+```
+
+#### 2) Exponentiation Operator(제곱연산자)
+```js
+let cubed = 2 ** 3;
+// same as: 2 * 2 * 2
+console.log(cubed); //8
+
+let a = 2;
+a **= 2;
+// same as: a = a * a;
+console.log(a); //4
+
+let b = 3;
+b **= 3;
+// same as: b = b * b * b;
+console.log(b); //27
+```
+## 2. ES8(2017)
+#### 1) Object.values / Object.entries
+values 매소드는 객체 내 모든 value 값들을 배열 형태로 반환   
+entries 메소드는 객체 내 key,value를 묶어서 배열 형태로 반환   
+```js
+const person = {
+  name: "Dooly",
+  age: 18,
+  class: 4,
+};
+
+console.log(Object.values(person)); //["Dooly", 18, 4] 
+console.log(Object.entries(person));//[["name", "Dooly"], ["age", 18], ["class", 4]] 
+```
+#### 2) String Padding
+문자열에 여백 or 문자를 추가할 수 있는 메소드 padStart , padEnd   
+```js
+let name = 'Hello';
+let targetLength = 7;
+let padString = ' ';
+
+console.log(name.padStart(targetLength, padString)); // 앞
+console.log(name.padEnd(targetLength, padString)); // 뒤
+//targetLength : 목표 문자열 길이, 현자 문자열의 길이보다 작다면 값 그대로 반환
+//padString: 현재 문자열에 채워넣을 다른 문자열. 기본값은 ""
+//return 값 : 바뀐 문자열
+
+console.log('abc'.padStart(10));         // "       abc"
+console.log('abc'.padStart(10, "foo"));  // "foofoofabc"
+console.log('abc'.padStart(6,"123465")); // "123abc"
+console.log('abc'.padStart(8, "0"));     // "00000abc"
+console.log('abc'.padStart(1));          // "abc"
+
+console.log('abc'.padEnd(10));          // "abc       "
+console.log('abc'.padEnd(10, "foo"));   // "abcfoofoof"
+console.log('abc'.padEnd(6, "123456")); // "abc123"
+console.log('abc'.padEnd(1));           // "abc"
+```
+#### 3) Object.getOwnPropertyDescriptors
+기존에 존재하던 Object.getOwnPropertyDescriptor에 s가 붙음   
+기존 Object.getOwnPropertyDescriptor는 객체와 속성명을 인자로 받아서 해당 속성의 속성 설명자를 반환   
+Object.getOwnPropertyDescriptors는 객체만 인자로 받아 해당 객체 내 자신의 모든 속성 설명자를 반환   
+
+```js
+const person = {
+  name: "Dooly",
+  age: 18,
+  class: 4,
+};
+console.log(Object.getOwnPropertyDescriptor(person,"name"));
+/*
+[object Object] {
+  configurable: true,
+  enumerable: true,
+  value: "Dooly",
+  writable: true
+}
+*/
+console.log(Object.getOwnPropertyDescriptors(person));
+/*
+[object Object] {
+  age: [object Object] {
+    configurable: true,
+    enumerable: true,
+    value: 18,
+    writable: true
+  },
+  class: [object Object] {
+    configurable: true,
+    enumerable: true,
+    value: 4,
+    writable: true
+  },
+  name: [object Object] {
+    configurable: true,
+    enumerable: true,
+    value: "Dooly",
+    writable: true
+  }
+}
+*/
+```
+#### 4) Trailing commas(final commas)
+javascript는 초기부터 배열에 final commas가 허용 되었다. ES8부터는 함수의 매개변수에도 허용 되었다.   
+(단 JSON에서는 허용되지 않음)   
+final commas를 쓰면 새로운 엘리먼트, 매개변수, 속성을 추가할 때 유용하고 수정 없이 복사해서 쓸 수 있음   
+이 외에도 버전 관리 이력이 간단하고 코드 편집이 더 편해진다는 장점이 있습니다.   
+```js
+//Array
+var arr = [1,2,3,];
+
+//Object
+var object = {
+  foo: "bar",
+  baz: "qwerty",
+  age: 42,
+};
+//function parameter, argument
+//아래 묶인 코드는 모두 유효하며 서로 같음
+function f(p) {}
+function f(p,) {}
+
+f(p);
+f(p,);
+
+Math.max(10, 20);
+Math.max(10, 20,);
+```
+#### 5) Async & Await
+ES2017에서 async 와 await의 추가로 Promise Chaining을 마치 동기적인 코드를 작성하듯이 비동기 로직을 쓸 수 있게 되었다.   
+**using Promise Chaining**
+```js
+function printMyInfo(userId) {
+  fetch(`https://api.github.com/users/${userId}`)
+    .then((res) => res.json())
+    .then((res) => console.log(res));
+}
+printMyInfo(id);
+```
+**using async await**
+```js
+async function printMyInfo(userId) {
+  let response = await fetch(`https://api.github.com/users/${userId}`);
+  response = await response.json();
+  console.log(response);
+}
+printMyInfo(id);
+```
+함수 앞에 async라는 키워드와 응답을 기다리는 부분에 await이라는 키워드를 사용하여 마치 동기적인 코드를 작성 하듯이 쓸 수 있게 되었다.   
+
+## 3. ES9(2018) 
+#### 1) Rest/Spread Properties(객체 리터럴에서의 전개)
+객체 리터럴에서도 전개 구문이 가능해 졌다. 전개구문이란 배열이나 문자열과 같은 iterable(반복 가능)한 Object를 전개하는 것이다.   
+```js
+const num =[1,2,3]
+console.log(...num) //1 2 3
+
+//함수 호출에서의 전개
+function myFunction(x, y, z) {}
+var args = [0, 1, 2];
+myFunction(...args);
+
+//객체 리터럴에서의 전개(ES9 추가)
+var obj1 = { foo: 'bar', x: 42 };
+var obj2 = { foo: 'baz', y: 13 };
+
+var clonedObj = { ...obj1 };
+// Object { foo: "bar", x: 42 }
+
+var mergedObj = { ...obj1, ...obj2 };
+// Object { foo: "baz", x: 42, y: 13 }
+```
+#### 2) Promise.prototype.finally
+promise에 finally과 추가 되었다. 기존엔 then 과 catch만 있었으나 finally는 성공 여부에 관계없이 promise 객체를 반환함.   
+```js
+let isLoading = true;
+
+fetch(myRequest).then(function(response) {
+    var contentType = response.headers.get("content-type");
+    if(contentType && contentType.includes("application/json")) {
+      return response.json();
+    }
+    throw new TypeError("Oops, we haven't got JSON!");
+  })
+  .then(function(json) { /* process your JSON further */ })
+  .catch(function(error) { console.log(error); })
+  .finally(function() { isLoading = false; });
+```
+
+## 4. ES10(2019)
+#### 1) Optional catch binding
+try,catch 구문을 쓸 때 원래 catch의 매개변수가 꼭 있어야 했지만 ES10 부터 선택적으로 바뀜   
+```js
+try {
+  doSomethingThatMightThrow();
+} catch (exception) {
+  //     ^^^^^^^^^
+  // We must name the binding, even if we don’t use it!
+  handleException();
+}
+//ES10
+try {
+  doSomethingThatMightThrow();
+} catch { // → No binding!
+  handleException();
+}
+```
+#### 2) Symbol.prototype.description
+이전에 Symbol의 내용을 보려면 아래와 같이 작성하였다.   
+```js
+const symbol = Symbol('foo');
+console.log(symbol.toString()); //"Symbol(foo)"
+console.log(symbol.toString().slice(7, -1)); //"foo"
+```
+Symbol.prototype.description 사용
+```js
+const symbol = Symbol('foo');
+console.log(symbol.description); //"foo"
+```
+#### 3) Object.fromEntries()
+ES8에서 도입된 Object.entries와 호환 되는 메소드이다. entries를 통해 만들어진 배열을 인자로 받아 다시 객체로 만들어 준다.   
+```js
+const person = {
+  name: "Dooly",
+  age: 18,
+  class: 4,
+};
+const entries = Object.entries(person);
+console.log(entries);
+const fromEntries = Object.fromEntries(entries);
+console.log(fromEntries);
+```
+#### 4) String.prototype.trimStart()/trimEnd()
+문자열의 앞 , 뒤 공백을 제거해줌. trimStart는 trimLeft로, trimEnd는 trimRight라는 별칭으로 쓸 수 있음.   
+```js
+const greeting = '   Hello world!   ';
+console.log(greeting.trimStart());
+// expected output: "Hello world!   ";
+console.log(greeting.trimEnd());
+// expected output: '   Hello world!';
+```
+#### 5) Array.prototype.flat()
+flat() 메서드는 모든 하위 배열 요소를 지정한 깊이까지 재귀적으로 이어붙인 새로운 배열을 생성합니다. 또한 배열의 구멍도 제거함
+```js
+const arr1 = [1, 2, [3, 4]];
+console.log(arr1.flat());
+// [1, 2, 3, 4]
+
+const arr2 = [1, 2, [3, 4, [5, 6]]];
+console.log(arr2.flat());
+// [1, 2, 3, 4, [5, 6]]
+
+const arr3 = [1, 2, [3, 4, [5, 6]]];
+console.log(arr3.flat(2));
+// [1, 2, 3, 4, 5, 6]
+
+const arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+console.log(arr4.flat(Infinity));
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+const arr5 = [1, 2, , 4, 5];
+console.log(arr5.flat());
+// [1, 2, 4, 5]
+```
+#### 6) Array.prototype.flatMap()
+flatMap()은 flat와 Map 함수를 합친 것이다. 먼저 배열의 각 엘리먼트에 map 수행 후 위에 flat을 수행한다.   
+```js
+let arr1 = [1, 2, 3, 4];
+
+console.log(arr1.map(x => [x * 2]));
+// [[2], [4], [6], [8]]
+
+console.log(arr1.flatMap(x => [x * 2]));
+// [2, 4, 6, 8]
+
+// 한 레벨만 평탄화됨
+console.log(arr1.flatMap(x => [[x * 2]]));
+// [[2], [4], [6], [8]]
+```
+
+## 5. ES11(2020)
+#### 1) Optional chaining
+참조를 할 때 값이 있는 지 없는 지 검증할 때 Optional chaining을 쓰면 참조가 null or undefined일 때 에러 대신 undefined를 반환해 준다.   
+**default**
+```js
+//default
+const person = {
+  name: "Dooly",
+  age: 18,
+  class:4,
+  personality:{
+      habit:"sports"
+  }
+};
+
+const person2= {
+    name:"Dooly",
+    age:18,
+    class:4
+}
+
+function printClass(person){
+    console.log(person.personality.habit)
+}
+printClass(person); //sports
+printClass(person2); //error
+```
+
+**Optional Chaining**
+```js
+//Optional Chaining
+const person = {
+  name: "Dooly",
+  age: 18,
+  class:4,
+  personality:{
+      habit:"sports"
+  }
+};
+
+const person2= {
+    name:"Dooly",
+    age:18,
+    class:4
+}
+
+function printClass(person){
+    console.log(person?.personality?.habit)
+}
+printClass(person); //sports
+printClass(person2); //undefined
+```
+#### 2) Nullish coalescing Operator
+주로 기본값을 할당할 떄 || 연산자를 활용했음 ! BUT, 0,' ' 같은 값들이 들어갈 때 의도대로 작동하지 않을 수 있음   
+```js
+//사용자는 익명을 원함
+const name =' '
+const userName = name || 'Guest';
+console.log(userName); //Guest
+
+//사용자는 0 이라는 메시지를 원함
+const num = 0;
+const message = num || 'undefined';
+console.log(message); //undefined
+```
+Nullish coalescing Operator를 이용하면 값이 Null 이나 undefined인 경우에만 기본 값을 할당해줄 수 있다. or 연산자 보다는 Nullish coalescing Operator를 사용하자.   
+```js
+//사용자는 익명을 원함
+const name =' '
+const userName = name ?? 'Guest';
+console.log(userName); //
+
+//사용자는 0이라는 메시지를 원함
+const num = 0;
+const message = num ?? 'undefined';
+console.log(message); // 0
+```
+
+#### 3) globalThis
+기존에는 js 실행환경에 따라서 global 객체에 접근하느 방법이 달랐음   
+브라우저에서는 window,self,frame 사용, 노드에서는 global, Web Worker*(Web Worker는 script 실행을 메인 쓰레드가 아니라 백그라운드 쓰레드에서 실행할 수 있도록 해주는 기술 입니다.)에서는 self를 통해서 접근했었음.*   
+globalThis를 이용하면 모든 환경에서 접근 가능하다.   
+```js
+// 브라우저 실행 환경 기준
+ globalThis === window // true
+```
+
+## 6. ES12(2021)
+#### 1) String.prototype.replaceAll()
+기존에 있던 replace에서 추가된 것으로 문자열에서 바꿀 문자를 모두 찾아 새로운 문자로 바꿔준다.   
+```js
+const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
+
+console.log(p.replaceAll('dog', 'monkey'));
+//"The quick brown fox jumps over the lazy monkey. If the monkey reacted, was it really lazy?"
+```
+#### 2) Promise.any()
+어떤 promise 하나라도 resolve 되면 resovle 된다.   
+```js
+const promise1 = Promise.reject(0);
+const promise2 = new Promise((resolve) => setTimeout(resolve, 100, 'quick'));
+const promise3 = new Promise((resolve) => setTimeout(resolve, 500, 'slow'));
+
+const promises = [promise1, promise2, promise3];
+
+Promise.any(promises).then((value) => console.log(value)); //"quick"
+```
+#### 3) Logical assignment operators
+(??, &&,||) 도 a += 2 처럼 할당 연산자 사용 가능하다.   
+```js
+expr1 ||= expr2 // expr1 || expr2
+expr1 &&= expr2 // expr1 && expr2
+expr1 ??= expr2 // expr1 ?? expr2
+```
+#### 4) Separators for numeric literals
+이제 큰 숫자 구분을 _를 이용하여 가능하다.
+```js
+const number = 1_000_000;
+const money = 1_000_000.123_456;
+const octal = 0o123_123;
+```
+
