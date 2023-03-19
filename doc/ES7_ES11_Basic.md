@@ -1,6 +1,6 @@
 ## 1. ES7(2016)
 #### 1) Array.prototype.includes() 
-[includes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+* [includes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
 배열 내에 값이 있는지 없는지 확인   
 값이 있으면 true, 없으면 false 를 반환   
 ```js
