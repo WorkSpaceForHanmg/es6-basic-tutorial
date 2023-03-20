@@ -1,8 +1,8 @@
 ## 1. ES7(2016)
 #### 1) Array.prototype.includes() 
-* [mdn: includes() function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
-* 배열 내에 값이 있는지 없는지 확인   
-* 값이 있으면 true, 없으면 false 를 반환   
+[mdn: includes() function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)   
+배열 내에 값이 있는지 없는지 확인   
+값이 있으면 true, 없으면 false 를 반환   
 ```js
 console.log([1, 2, 3].includes(2)); //true
 console.log([1, 2, 3].includes(4)); //false
@@ -48,6 +48,7 @@ function printMyInfo(userId) {
 printMyInfo(id);
 ```
 **using async await**
+함수 앞에 async라는 키워드와 응답을 기다리는 부분에 await이라는 키워드를 사용하여 마치 동기적인 코드를 작성 하듯이 쓸 수 있게 되었다.   
 ```js
 async function printMyInfo(userId) {
   let response = await fetch(`https://api.github.com/users/${userId}`);
@@ -56,10 +57,12 @@ async function printMyInfo(userId) {
 }
 printMyInfo(id);
 ```
-함수 앞에 async라는 키워드와 응답을 기다리는 부분에 await이라는 키워드를 사용하여 마치 동기적인 코드를 작성 하듯이 쓸 수 있게 되었다.   
 #### 2) Object.values / Object.entries
 values 매소드는 객체 내 모든 value 값들을 배열 형태로 반환   
 entries 메소드는 객체 내 key,value를 묶어서 배열 형태로 반환   
+[mdn: Object.values()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values)   
+[mdn: Object.entries()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)   
+
 ```js
 const person = {
   name: "Dooly",
@@ -72,6 +75,9 @@ console.log(Object.entries(person));//[["name", "Dooly"], ["age", 18], ["class",
 ```
 #### 3) String Padding
 문자열에 여백 or 문자를 추가할 수 있는 메소드 padStart , padEnd   
+[mdn: String.prototype.padStart()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)   
+[mdn: String.prototype.padEnd()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd)   
+
 ```js
 let name = 'Hello';
 let targetLength = 7;
@@ -170,6 +176,8 @@ Math.max(10, 20,);
 #### 1) Rest/Spread Properties(객체 리터럴에서의 전개)
 객체 리터럴에서도 전개 구문이 가능해 졌다. 전개구문이란 배열이나 문자열과 같은 iterable(반복 가능)한 Object를 전개하는 것이다.   
 배열에서 사용되던 rest/spread 문법이 객체에서도 사용 가능하게 되었다.   
+[mdn : Spread Syntax(...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)   
+
 ```js
 const num =[1,2,3]
 console.log(...num) //1 2 3
@@ -191,6 +199,8 @@ var mergedObj = { ...obj1, ...obj2 };
 ```
 #### 2) Promise.prototype.finally
 promise에 finally과 추가 되었다. 기존엔 then 과 catch만 있었으나 finally는 성공 여부에 관계없이 promise 객체를 반환함.   
+[mdn : Promise.prototype.finally()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally)   
+
 ```js
 let isLoading = true;
 
@@ -209,6 +219,8 @@ fetch(myRequest).then(function(response) {
 ## 4. ES10(2019)
 #### 1) Optional catch binding
 try,catch 구문을 쓸 때 원래 catch의 매개변수가 꼭 있어야 했지만 ES10 부터 선택적으로 바뀜   
+[mdn: try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch)
+
 ```js
 try {
   doSomethingThatMightThrow();
@@ -226,6 +238,8 @@ try {
 ```
 #### 2) Symbol.prototype.description
 이전에 Symbol의 내용을 보려면 아래와 같이 작성하였다.   
+[mdn: Symbol.prototype.description](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/description)   
+
 ```js
 const symbol = Symbol('foo');
 console.log(symbol.toString()); //"Symbol(foo)"
@@ -238,6 +252,8 @@ console.log(symbol.description); //"foo"
 ```
 #### 3) Object.fromEntries()
 ES8에서 도입된 Object.entries와 호환 되는 메소드이다. entries를 통해 만들어진 배열을 인자로 받아 다시 객체로 만들어 준다.   
+[mdn: Object.fromEntries()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries)   
+
 ```js
 const person = {
   name: "Dooly",
@@ -261,6 +277,9 @@ console.log(fromEntries);
 #### 4) String.prototype.trimStart()/trimEnd()
 문자열의 앞, 뒤 공백을 제거해 준다.   
 trimStart는 trimLeft로, trimEnd는 trimRight라는 별칭으로 쓸 수 있음.   
+[mdn : String.prototype.trimStart()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart)   
+[mdn : String.prototype.trimEnd()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd)   
+
 ```js
 const greeting = '   Hello world!   ';
 console.log(greeting.trimStart());
