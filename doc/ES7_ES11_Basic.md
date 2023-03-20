@@ -333,6 +333,8 @@ console.log(arr1.flatMap(x => [[x * 2]]));
 ## 5. ES11(2020)
 #### 1) Optional chaining
 참조를 할 때 값이 있는 지 없는 지 검증할 때 Optional chaining을 쓰면 참조가 null or undefined일 때 에러 대신 undefined를 반환해 준다.   
+[mdn: Optional chaining (?.)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)   
+
 **default**
 ```js
 //default
@@ -410,6 +412,8 @@ console.log(message); // 0
 기존에는 js 실행환경에 따라서 global 객체에 접근하느 방법이 달랐음   
 브라우저에서는 window, self, frame 사용, Node에서는 global, Web Worker(Web Worker는 script 실행을 메인 쓰레드가 아니라 백그라운드 쓰레드에서 실행할 수 있도록 해주는 기술 입니다.)에서는 self를 통해서 접근 했었음.     
 globalThis를 이용하면 모든 환경에서 접근 가능하다.   
+[mdn: globalThis](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/globalThis)   
+
 ```js
 // 브라우저 실행 환경 기준
  globalThis === window // true
@@ -417,7 +421,9 @@ globalThis를 이용하면 모든 환경에서 접근 가능하다.
 
 ## 6. ES12(2021)
 #### 1) String.prototype.replaceAll()
-기존에 있던 replace에서 추가된 것으로 문자열에서 바꿀 문자를 모두 찾아 새로운 문자로 바꿔준다.   
+기존에 있던 replace에서 추가된 것으로 문자열에서 바꿀 문자를 모두 찾아 새로운 문자로 바꿔준다.  
+[mdn: String.prototype.replaceAll()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)   
+
 ```js
 const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
 
@@ -426,7 +432,8 @@ console.log(p.replaceAll('dog', 'monkey'));
 ```
 #### 2) Promise.any()
 여러개의 promise 중에서 하나라도 resolve 되면 resovle 되어진다.   
-[mdn : Promise.any()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
+[mdn : Promise.any()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)   
+
 ```js
 const promise1 = Promise.reject(0);
 const promise2 = new Promise((resolve) => setTimeout(resolve, 100, 'quick'));
@@ -438,7 +445,8 @@ Promise.any(promises).then((value) => console.log(value)); //"quick"
 ```
 #### 3) Logical assignment operators
 (??, &&,||) 도 a += 2 처럼 할당 연산자 사용 가능하다.   
-[mdn: Logical OR assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment)
+[mdn: Logical OR assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment)   
+
 ```js
 expr1 ||= expr2 // expr1 || expr2
 expr1 &&= expr2 // expr1 && expr2
