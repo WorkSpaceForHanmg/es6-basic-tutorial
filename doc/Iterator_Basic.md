@@ -54,9 +54,9 @@ const arr = [1, 2, 3];
 const iterableObj = arr[Symbol.iterator]();
 ```
 arr에는 일반적인 배열을 할당 하였고 iterableObj에는 Symbol.iterator를 호출하여 Iterator 오브젝트를 생성 하였다.   
-arr은 prototype이 `Array`이며 arr의 prototype을 확인 하면 [[Prototype]]: Array(0)   
+arr은 prototype이 `Array`이며 arr의 prototype을 확인 하면 `[[Prototype]]: Array(0)`   
 iterableObj는 `Array Iterator`라는 이터레이터 오브젝트이다.   
-iterableObj의 prototype을 확인 하면 [[Prototype]]: Array Iterator   
+iterableObj의 prototype을 확인 하면 `[[Prototype]]: Array Iterator`   
 
 **Iterable 오브젝트로 만들어서 랭킹을 기록하는 Class**   
 마라톤 대회에서 순서대로 우승한 사람들을 Class를 통해 기록하도록 만들었다.   
@@ -94,7 +94,7 @@ for (let ranking of marathonRanking) {
   console.log(`${ranking.rank}st winner is ${ranking.winner}`);
 }
 ```
-출력해보면 순서대로 돌면서 우승자를 찍어준다.   
+출력해보면 순서대로 순회하며 우승자를 찍어준다.   
 ```js
 1st winner is John
 2st winner is Lion
@@ -109,7 +109,7 @@ for (let ranking of marathonRanking) {
 2. Set
 3. Map - 원소들을 key/value 쌍으로 탐색한다.
 4. DOM NodeList - Node객체들을 탐색한다.
-5. primitive string - 각 유니코드별로 탐색한다.   
+5. primitive string - 각 유니코드 별로 탐색한다.   
 
 Array(typed array 포함), Set, Map의 아래 메서드들은 Iterator를 반환한다.   
 1. entries - key,value쌍 [key, value]
@@ -118,7 +118,7 @@ Array(typed array 포함), Set, Map의 아래 메서드들은 Iterator를 반환
 이 메서드들에서 리턴되는 객체는 Iterable이면서 Iterator이다.   
 Array에서 key는 인덱스들을 나타내며, Set에서는 key,value가 둘 다 value로 같다.   
 
-### 2.1 Iterable Consumers
+#### 2.1 Iterable Consumers
 다음 문법들은 Iterable을 사용한다.
 
 **for-of loop**
@@ -129,11 +129,11 @@ for (const value of someIterable) {
 ```
 **spread Operator**
 ```js
-// Iterable의 모든  value들이 arr에 추가된다.
+// Iterable의 모든 value들이 arr에 추가된다.
 let arr = [firstElem, ...someIterable, lastElem];
 
 // Iterable의 모든 value들이 arguments에 추가된다. 
-someFunction(firstArg, ...someIterable, lastArg);
+someFunction(firstArg, ...someIterable, lastArg){};
 ```
 **Positional Destructing**
 ```js
@@ -164,7 +164,6 @@ console.log(userNamesGroupedByLocation);
 ```
 **Level1**
 ```js
-console.log(userNamesGroupedByLocation);
 userNamesGroupedByLocation[Symbol.iterator] = function() {
   return {
     next: () => {
@@ -226,6 +225,7 @@ userNamesGroupedByLocation[Symbol.iterator] = function() {
       } else {
         userIndex++;
       }
+      
       return {
         done: false,
         value: user,        

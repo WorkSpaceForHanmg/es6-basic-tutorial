@@ -1,5 +1,5 @@
-### 1. var, let
-* **function scope,  let - block scope** 
+### 1. var vs let
+* **var - function scope,  let - block scope** 
 ```js
 function foo() {
   var a = 'hello';
@@ -9,6 +9,17 @@ function foo() {
   }
   console.log(a); // bye
 }
+foo();
+
+function foo_let() {
+  var a = 'hello';
+  if (true) {
+    let a = 'bye';
+    console.log(a); // bye
+  }
+  console.log(a); // hello
+}
+foo_let();
 ```
 
 ### 2. template literals
@@ -344,6 +355,7 @@ class Mammal{
 
 * **Create an object**
 ```js
+// Mammal 객체생성
 let monkey = new Mammal("Fred");
 console.log(monkey.getInfo());
 
@@ -360,6 +372,7 @@ console.log(`Mammal 2 : ${chipmunk.name}`);
 
 * **Inheritance : You can inherit properties and methods with extends**
 ```js
+//Marsupial - 유대류는 포유류의 한 갈래
 class Marsupial extends Mammal{
   constructor(name, hasPouch){
     // Call the super class constructor
@@ -381,7 +394,8 @@ class Marsupial extends Mammal{
   }
  
 }
- 
+
+// Marsupial 객체생성
 let kangaroo = new Marsupial("Paul", true);
 console.log(`It is ${kangaroo.hasPouch} that ${kangaroo.name} has a pouch`);
 
@@ -413,6 +427,7 @@ console.log(`${carl.getInfo()}`);
 * **private member**
 ```js
 class Person {
+  //생성자
   constructor(name) {
     let _name = name;
     this.setName = function(name){
@@ -421,11 +436,14 @@ class Person {
     this.getName = function() {
       return _name;
     }
-  }//생성자
+  }
+  // getter
   get name() {
     return this.getName();
   }
 }
+
+// Person 객체생성
 let person1 = new Person("aaa");
 console.log(person1.getName());
 console.log(person1.name);
@@ -520,3 +538,28 @@ var p4 = new Promise((resolve, reject) => {
 p4.then((val) => console.log(`${val}`))
   .catch((err) => console.log(`${err.message}`));
 ```  
+
+### 16. Modules
+* export or import statement in a module to export or import variables, functions, classes 
+
+* **export**
+```js
+let greet = "Hello World!";
+const PI = 3.14; 
+
+function multiplyNumbers(a, b) {
+    return a * b;
+}
+
+// Exporting variables and functions
+export { greet, PI, multiplyNumbers };
+```  
+* **import**
+```js
+import { greet, PI, multiplyNumbers } from './main.js';
+
+alert(greet); // Hello World!
+alert(PI); // 3.14
+alert(multiplyNumbers(6, 15)); // 90
+``` 
+
