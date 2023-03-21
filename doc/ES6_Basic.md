@@ -78,6 +78,7 @@ arr5.push(20);
 console.log(arr5);
 console.log(arr);
 ```
+
 * **You can use tagged template literals to modify output using a function**
 ```js
 function doMath(strings, ...values) {
@@ -94,6 +95,8 @@ doMath`Sub${10} ${20}`;
 
 ### 5. for-of 
 * **for-in, for-of, forEach**
+[mdn: for...of](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of)
+
 ```js
 const msgs = ['java','python','kotlin'];
 
@@ -130,6 +133,8 @@ for (let val of array3) console.log(`Array Val : ${val}`);
 ```
 
 ### 7. Arrow Function 
+[mdn: Arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
 ```js
 function add(n1,n2) {
   return n1 + n2;
@@ -148,6 +153,7 @@ console.log(result3(30,40));
 ```
 
 * **using arrow function : forEach()**
+[mdn: Array.prototype.forEach()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 ```js
 const myArr = [10,30,50,60];
 //forEach(consumer) val => void
@@ -155,6 +161,10 @@ myArr.forEach(val => console.log(val));
 ```
 
 * **using arrow function : map(), filter(), reduce()**
+[mdn: Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)   
+[mdn: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)   
+[mdn: Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)   
+
 ```js
 const myArr = [10,33,50,60];
 //map(function) t => r
@@ -190,6 +200,9 @@ blackDog.bark2(); //흰둥이 멍멍!
 ```
 
 ### 8. String util function 
+[mdn: Array.prototype.startsWith()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith)   
+[mdn: Array.prototype.endsWith()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith)   
+
 ```js
 // Repeat a string
 console.log("Hello ".repeat(3));
@@ -218,6 +231,8 @@ getSum(3);
 ```
 
 ### 10. Destructuring Assignment
+
+* **Array의 Destructuring Assignment**
 ```js
 // You can destructor arrays as well
 let favNums = [2.718, .5772, 4.6692];
@@ -229,10 +244,20 @@ let [, ...last2] = favNums;
 console.log(last2);
 console.log(`2nd Num : ${last2[0]} ${last2[1]}`);
 
-let [, ...rest] = favNums;
+let [...rest] = favNums;
 console.log(rest);
 console.log(rest[0], rest[1]);
 
+let [n1,n2,n3] = favNums;
+console.log(n1 + " " + n2 + " " + n3);
+
+// This can be used to switch values
+let val1 = 1, val2 = 2;
+[val1,val2] = [val2,val1];
+console.log(`Val2 : ${val2}`);
+```
+* **Object의 Destructuring Assignment**
+```js
 const {a,b,...z} = {a:100,b:200,c:300,d:400};
 console.log(a);
 console.log(b);
@@ -240,13 +265,6 @@ console.log(z);
 console.log(z.c);
 console.log(z.d);
 
-// This can be used to switch values
-let val1 = 1, val2 = 2;
-[val1,val2] = [val2,val1];
-
-console.log(`Val2 : ${val2}`);
-
-//Object의 Destructuring Assignment
 let obj = {p: 42, q: true};
 console.log(obj.p);
 console.log(obj.q);
@@ -266,12 +284,31 @@ let {home,office} = addr;
 console.log(home);
 console.log(office);
 
-let {name,addr:{home,office}} = person;
+// let {name,addr:{home,office}} = person;
+// console.log(name);
+// console.log(home);
+// console.log(office); 
+```
+
+```js
+let person = {
+  name:'React', 
+  addr:{home:'Seoul', office:'Gyeonggi'},
+  phone:{mobile:{
+    phone1:'010-1234',
+    phone2:'010-5678'
+  }}
+};
+
+let {name,
+     addr:{home,office}, 
+     phone:{mobile:{phone1,phone2}}} = person;
 console.log(name);
 console.log(home);
 console.log(office); 
+console.log(phone1);
+console.log(phone2);
 ```
-
 ### 11. OBJECTS
 ```js
 // You create object literals like this
@@ -310,6 +347,10 @@ console.log(`Name : ${name}, Owner : ${owner}`);
 // Get the inner class value
 let { address } = spot
 console.log(`Address : ${address.street}`);
+
+let { address: {street, city}} = spot;
+console.log(`Street : ${street}`);
+console.log(`City : ${city}`);
 ```
 
 ### 12. CLASSES
@@ -349,9 +390,8 @@ class Mammal{
         console.log(`${this.name} is a mammal`);
       }
     };
-  }
- 
-}
+  } 
+};
 ```
 
 * **Create an object**
@@ -360,7 +400,7 @@ class Mammal{
 let monkey = new Mammal("Fred");
 console.log(monkey.getInfo());
 
-// Change name
+// Change name - Call setter
 monkey.name = "Mark";
  
 // Call getter
@@ -369,6 +409,9 @@ console.log(`Mammal : ${monkey.name}`);
 // Create Mammal using static function
 let chipmunk = Mammal.makeMammal("Chipper");
 console.log(`Mammal 2 : ${chipmunk.name}`);
+
+chipmunk.getInfo2().namef();
+chipmunk.getInfo2().namef2();
 ```
 
 * **Inheritance : You can inherit properties and methods with extends**
