@@ -521,7 +521,8 @@ for (let val of randSet) console.log(`Set Val : ${val}`);
 ```
 
 ### 14. MAPS
-* **A Map is a collection of key/value pairs**
+* **A Map is a collection of key/value pairs**   
+[mdn: Map()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)   
 ```js
 var randMap = new Map();
 randMap.set("key1", "Random String");
