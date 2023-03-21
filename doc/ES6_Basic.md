@@ -499,7 +499,7 @@ console.log(person1.name);
 ```
 
 ### 13. SETS
-* **A Set is a list of values with no duplicates**
+* **A Set is a list of values with no duplicates**   
 [mdn: Set()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)
 ```js
 var randSet = new Set();
