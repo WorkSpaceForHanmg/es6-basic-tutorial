@@ -161,8 +161,8 @@ const myArr = [10,33,50,60];
 const result = myArr.map(val => val + 30);
 console.log(result);
 
-//filter(predicate)
-let evenValue = myarr.filter(item => item % 2 == 0);
+//filter(predicate) t => boolean
+let evenValue = myArr.filter(item => item % 2 == 0);
 console.log(evenValue);
 
 //reduce(operator) (t1,t2) => t3
