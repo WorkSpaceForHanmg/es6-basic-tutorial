@@ -13,7 +13,7 @@ console.log([1, 2, -0].includes(+0)); //true
 console.log([1, 2, +0].includes(-0)); //true
 
 console.log(["a", "b", "c"].includes("a")); //true
-console.log(["a", "b", "c"].includes("a", 0)); //false
+console.log(["a", "b", "c"].includes("a", 1)); //false
 ```
 
 #### 2) Exponentiation Operator(제곱연산자)

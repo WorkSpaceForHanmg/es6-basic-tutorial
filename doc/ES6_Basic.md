@@ -220,7 +220,7 @@ getSum(3);
 ### 10. Destructuring Assignment
 ```js
 // You can destructor arrays as well
-let favNums = [2.718, .5772, 4.6692mmjj];
+let favNums = [2.718, .5772, 4.6692];
 let [,,chaos] = favNums;
 console.log(`Chaos : ${chaos}`);
 
