@@ -500,7 +500,8 @@ console.log(person1.name);
 
 ### 13. SETS
 * **A Set is a list of values with no duplicates**   
-[mdn: Set()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)
+[mdn: Set()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)   
+[mdn: WeakSet](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)   
 ```js
 var randSet = new Set();
 randSet.add(10);
@@ -523,6 +524,7 @@ for (let val of randSet) console.log(`Set Val : ${val}`);
 ### 14. MAPS
 * **A Map is a collection of key/value pairs**   
 [mdn: Map()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)   
+[mdn: WeakMap](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)   
 ```js
 var randMap = new Map();
 randMap.set("key1", "Random String");
