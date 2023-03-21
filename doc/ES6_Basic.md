@@ -485,6 +485,11 @@ class Person {
   get name() {
     return this.getName();
   }
+  set name(name){
+    if(name.startsWith('A')){
+      this.setName(name);
+    }
+  }
 }
 
 // Person 객체생성
@@ -495,6 +500,7 @@ console.log(person1.name);
 
 ### 13. SETS
 * **A Set is a list of values with no duplicates**
+[mdn: Set()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)
 ```js
 var randSet = new Set();
 randSet.add(10);
