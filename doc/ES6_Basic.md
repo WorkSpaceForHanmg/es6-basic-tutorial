@@ -113,6 +113,7 @@ msgs.forEach(msg => console.log(msg));
 ```
 
 ### 6. ARRAYS
+[mdn: Array.from()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
 ```js
 // Array.of() is used to create arrays instead of the array
 // constructor
