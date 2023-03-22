@@ -158,6 +158,7 @@ console.log(it.next()); // { value: undefined, done: true }
 제너레이터를 사용할때 try...catch문으로 에러를 잘 핸들링 하는 것이 중요하다.   
 
 ##### generator examples
+* **일련의 비동기 작업을 순서대로 수행하기**
 ```js
 function *orderCoffee(phoneNumber) {
   const id = getId(phoneNumber);
@@ -186,4 +187,23 @@ function run(foo) {
   console.log(`Order : ${order.value}`);
 }
 run(orderCoffee);
+```
+
+* **next()를 호출하는 패턴을 단순화하기**
+```js
+function run(foo, phoneNumber) {
+  const task = foo(phoneNumber);
+  let result = task.next();
+  console.log(result.value);
+  function step() {
+    if ( !result.done ) {
+    result = task.next(result.value);
+    console.log(result.value);
+    step();
+  }
+  }
+  step();
+}
+
+run(orderCoffee, "010-1234-5678")
 ```

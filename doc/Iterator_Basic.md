@@ -161,6 +161,12 @@ const userNamesGroupedByLocation = {
   ],
 };
 console.log(userNamesGroupedByLocation);
+
+const cityKeys = Object.keys(userNamesGroupedByLocation);
+console.log(cityKeys);  //["Seoul", "Busan", "NewYork"]
+console.log(userNamesGroupedByLocation[cityKeys[0]]); //["둘리", "길동", "야옹이"]
+console.log(userNamesGroupedByLocation[cityKeys[0]][0]); //"둘리"
+
 ```
 **Level1**
 ```js

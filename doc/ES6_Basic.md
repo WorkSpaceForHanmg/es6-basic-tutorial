@@ -1,3 +1,4 @@
+#  ECMAScript6 문법
 ### 1. var vs let
 * **var - function scope,  let - block scope** 
 ```js
