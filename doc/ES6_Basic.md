@@ -42,7 +42,18 @@ function f (x, y = 7, z = 42) {
 f(1) === 50
 console.log(f(1) === 50);
 ```
-### template literals
+* **Default values are defined next to parameters**
+```js
+function getSum(num1 = 1, num2 = 2){
+  console.log(`${num1} + ${num2} = ${num1+num2}`);
+ 
+  // arguments[] only receives the value passed
+  console.log(`${arguments[0]} + ${arguments[1]}`)
+}
+getSum(3);
+```
+<hr/>
+### Template Literals
 * **You can use string interpolation using template literals**
 ```js
 let fName = "Derek";
@@ -235,18 +246,6 @@ console.log(fName.endsWith("ek"));
  
 // Does it include
 console.log(fName.includes("ere"));
-```
-
-### 9. Default Parameter Values 
-* **Default values are defined next to parameters**
-```js
-function getSum(num1 = 1, num2 = 2){
-  console.log(`${num1} + ${num2} = ${num1+num2}`);
- 
-  // arguments[] only receives the value passed
-  console.log(`${arguments[0]} + ${arguments[1]}`)
-}
-getSum(3);
 ```
 
 ### 10. Destructuring Assignment
