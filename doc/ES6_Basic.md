@@ -56,7 +56,7 @@ getSum(3);
 ```
 <hr/>
 
-### Template Literals
+## Template Literals
 * **You can use string interpolation using template literals**
 ```js
 let fName = "Derek";
@@ -68,35 +68,83 @@ let num1 = 10
 let num2 = 5
 console.log(`10 * 5 = ${num1 * num2}`);
 ```
+<hr/>
 
-### 3. Object Literal
+## Enhanced Object Properties
+#### 1) Property Shorthand
+* ECMAScript 5
 ```js
 let name = 'ReactJS';
 let age = 30;
 const obj1 = {"name":name, "age":age};
 console.log(obj1);
-
+```
+* ECMAScript 6
+```js
 const obj2 = {name, age};
 console.log(obj2);
+```
+#### 2) Computed Property names
+* ECMAScript5
+```js
+var obj = {
+    foo: "bar"
+};
+obj[ "baz" + quux() ] = 42;
+```
+* ECMAScript6
+```js
+let obj = {
+    foo: "bar",
+    [ "baz" + quux() ]: 42
+}
 
 let myName = "name";
 const obj11 = {[myName]:name};
 console.log(obj11);
 ```
-
-### 4. Spread Operator (...) 펼침연산자
+#### 2) Method Properties
+* ECMAScript5
+```js
+obj = {
+    foo: function (a, b) {
+        …
+    },
+    bar: function (x, y) {
+        …
+    },
+    //  quux: no equivalent in ES5
+    …
+};
+```
+* ECMAScript6
+```js
+obj = {
+    foo (a, b) {
+        …
+    },
+    bar (x, y) {
+        …
+    },
+    *quux (x, y) {
+        …
+    }
+}
+```
+## Spread Operator (...) 펼침연산자
+* ECMAScript 5
 ```js
 const odd = [1, 3, 5];
 const nums = [2 ,4, 6].concat(odd);
 console.log(nums);
-
-const nums2 = [2, ...odd, 4, 6];
-console.log(nums2);
-
 const arr = [1, 2, 3, 4];
 const arr2 = arr.slice();
 console.log(arr);
 console.log(arr2);
+
+* ECMAScript 6
+const nums2 = [2, ...odd, 4, 6];
+console.log(nums2);
 const arr3 = [...arr];
 console.log(arr3);
 
@@ -112,8 +160,25 @@ arr5.push(20);
 console.log(arr5);
 console.log(arr);
 ```
+## Rest Parameter
+* ECMAScript 5
+```js
+function f (x, y) {
+    var a = Array.prototype.slice.call(arguments, 2);
+    return (x + y) * a.length;
+};
+f(1, 2, "hello", true, 7) === 9;
+```
 
-* **You can use tagged template literals to modify output using a function**
+* ECMAScript 6
+```js
+function f (x, y, ...a) {
+    return (x + y) * a.length
+}
+f(1, 2, "hello", true, 7) === 9
+```
+
+* ECMAScript 6
 ```js
 function doMath(strings, ...values) {
   if (strings[0] == 'Add') {
@@ -122,7 +187,6 @@ function doMath(strings, ...values) {
     console.log(`${values[0]} - ${values[1]} = ${values[0] - values[1]}`);
   }
 }
- 
 doMath`Add${10} ${20}`;
 doMath`Sub${10} ${20}`;
 ```
