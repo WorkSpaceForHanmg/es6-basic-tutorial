@@ -103,7 +103,7 @@ let myName = "name";
 const obj11 = {[myName]:name};
 console.log(obj11);
 ```
-#### 2) Method Properties
+#### 3) Method Properties
 * ECMAScript5
 ```js
 obj = {
@@ -141,18 +141,19 @@ const arr = [1, 2, 3, 4];
 const arr2 = arr.slice();
 console.log(arr);
 console.log(arr2);
-
-* ECMAScript 6
-const nums2 = [2, ...odd, 4, 6];
-console.log(nums2);
-const arr3 = [...arr];
-console.log(arr3);
-
 //bad 
 const arr4 = arr;
 arr4.push(10);
 console.log(arr4);
 console.log(arr);
+
+```
+* ECMAScript 6
+```js
+const nums2 = [2, ...odd, 4, 6];
+console.log(nums2);
+const arr3 = [...arr];
+console.log(arr3);
 
 //good 
 const arr5 = [...arr];
