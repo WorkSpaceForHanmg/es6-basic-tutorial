@@ -1,5 +1,5 @@
 #  ECMAScript6 문법
-### var vs let
+## var vs let
 * **var - function scope,  let - block scope** 
 ```js
 function foo() {
@@ -22,7 +22,9 @@ function foo_let() {
 }
 foo_let();
 ```
-### Default Parameter Values
+<hr/>
+
+## Default Parameter Values
 * ECMAScript 5
 ```js
 function f (x, y, z) {
@@ -42,7 +44,7 @@ function f (x, y = 7, z = 42) {
 f(1) === 50
 console.log(f(1) === 50);
 ```
-* **Default values are defined next to parameters**
+* ECMAScript 6 
 ```js
 function getSum(num1 = 1, num2 = 2){
   console.log(`${num1} + ${num2} = ${num1+num2}`);
@@ -53,6 +55,7 @@ function getSum(num1 = 1, num2 = 2){
 getSum(3);
 ```
 <hr/>
+
 ### Template Literals
 * **You can use string interpolation using template literals**
 ```js
