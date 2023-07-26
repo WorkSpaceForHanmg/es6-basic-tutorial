@@ -1,5 +1,5 @@
 #  ECMAScript6 문법
-### 1. var vs let
+### var vs let
 * **var - function scope,  let - block scope** 
 ```js
 function foo() {
@@ -22,8 +22,27 @@ function foo_let() {
 }
 foo_let();
 ```
-
-### 2. template literals
+### Default Parameter Values
+* ECMAScript 5
+```js
+function f (x, y, z) {
+    if (y === undefined)
+        y = 7;
+    if (z === undefined)
+        z = 42;
+    return x + y + z;
+};
+console.log(f(1) === 50);
+```
+* ECMAScript 6
+```js
+function f (x, y = 7, z = 42) {
+    return x + y + z
+}
+f(1) === 50
+console.log(f(1) === 50);
+```
+### template literals
 * **You can use string interpolation using template literals**
 ```js
 let fName = "Derek";
@@ -159,7 +178,7 @@ const myArr = [10,30,50,60];
 myArr.forEach(val => console.log(val));
 ```
 
-* **using arrow function : map(), filter(), reduce()**
+* **using arrow function : map(), filter(), reduce()**   
 [mdn: Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)   
 [mdn: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)   
 [mdn: Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)   
