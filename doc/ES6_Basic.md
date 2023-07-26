@@ -426,6 +426,8 @@ console.log(office);
 console.log(phone1);
 console.log(phone2);
 ```
+<hr/>
+
 ## OBJECTS
 ```js
 // You create object literals like this
@@ -469,6 +471,7 @@ let { address: {street, city}} = spot;
 console.log(`Street : ${street}`);
 console.log(`City : ${city}`);
 ```
+<hr/>
 
 ## CLASSES
 * **Class Definition**
@@ -614,6 +617,8 @@ let person1 = new Person("aaa");
 console.log(person1.getName());
 console.log(person1.name);
 ```
+<hr/>
+
 ## Symbol Type
 * Unique and immutable data type to be used as an identifier for object properties. 
 * Symbol can have an optional description, but for debugging purposes only.
@@ -648,6 +653,8 @@ Object.keys(obj) // []
 Object.getOwnPropertyNames(obj) // []
 Object.getOwnPropertySymbols(obj) // [ foo, bar ]
 ```
+<hr/>
+
 ## SETS
 * **A Set is a list of values with no duplicates**   
 [mdn: Set()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)   
@@ -670,6 +677,7 @@ randSet.delete(10);
 // Iterate a Set
 for (let val of randSet) console.log(`Set Val : ${val}`);
 ```
+<hr/>
 
 ## MAPS
 * **A Map is a collection of key/value pairs**   
@@ -692,6 +700,7 @@ randMap.forEach(function(value, key){
   console.log(`${key} : ${value}`);
 });
 ```
+<hr/>
 
 ## PROMISES
 * Promises define code that is to be executed later
@@ -741,8 +750,9 @@ var p4 = new Promise((resolve, reject) => {
 p4.then((val) => console.log(`${val}`))
   .catch((err) => console.log(`${err.message}`));
 ```  
+<hr/>
 
-### 16. Modules
+## Modules
 * export or import statement in a module to export or import variables, functions, classes 
 
 * **export**
