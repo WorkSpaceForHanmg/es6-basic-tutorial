@@ -192,7 +192,7 @@ doMath`Add${10} ${20}`;
 doMath`Sub${10} ${20}`;
 ```
 
-### 5. for-of 
+## for-of   
 * **for-in, for-of, forEach**
 [mdn: for...of](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of)
 
@@ -214,7 +214,7 @@ for(let msg of msgs) {
 msgs.forEach(msg => console.log(msg));
 ```
 
-### 6. ARRAYS
+## ARRAYS
 [mdn: Array.from()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
 ```js
 // Array.of() is used to create arrays instead of the array
@@ -231,7 +231,7 @@ let array3 = Array.from(array1, (value) => value * 2);
 for (let val of array3) console.log(`Array Val : ${val}`);
 ```
 
-### 7. Arrow Function 
+## Arrow Function 
 ```js
 function add(n1,n2) {
   return n1 + n2;
@@ -277,7 +277,7 @@ const sum = myArr.reduce((prev,curr) => prev + curr);
 console.log(sum);
 ```
 
-* **Arrow function this**
+* **Arrow function this**   
 [mdn: Arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 ```js
 function BlackDog() {
@@ -297,7 +297,7 @@ blackDog.bark(); // 검둥이 멍멍!
 blackDog.bark2(); //흰둥이 멍멍!
 ```
 
-### 8. String util function 
+## String util function 
 [mdn: Array.prototype.startsWith()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith)   
 [mdn: Array.prototype.endsWith()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith)   
 
@@ -316,7 +316,7 @@ console.log(fName.endsWith("ek"));
 console.log(fName.includes("ere"));
 ```
 
-### 10. Destructuring Assignment
+## Destructuring Assignment
 
 * **Array의 Destructuring Assignment**
 ```js
@@ -395,7 +395,7 @@ console.log(office);
 console.log(phone1);
 console.log(phone2);
 ```
-### 11. OBJECTS
+## OBJECTS
 ```js
 // You create object literals like this
 function createAnimal(name, owner){
@@ -439,7 +439,7 @@ console.log(`Street : ${street}`);
 console.log(`City : ${city}`);
 ```
 
-### 12. CLASSES
+## CLASSES
 * **Class Definition**
 ```js
 class Mammal{
@@ -583,8 +583,41 @@ let person1 = new Person("aaa");
 console.log(person1.getName());
 console.log(person1.name);
 ```
-
-### 13. SETS
+## Symbol Type
+* Unique and immutable data type to be used as an identifier for object properties. 
+* Symbol can have an optional description, but for debugging purposes only.
+```js
+Symbol("foo") !== Symbol("foo")
+const foo = Symbol()
+const bar = Symbol()
+typeof foo === "symbol"
+typeof bar === "symbol"
+let obj = {}
+obj[foo] = "foo"
+obj[bar] = "bar"
+JSON.stringify(obj) // {}
+Object.keys(obj) // []
+Object.getOwnPropertyNames(obj) // []
+Object.getOwnPropertySymbols(obj) // [ foo, bar ]
+```
+### Global Symbols
+```js
+Symbol.for("app.foo") === Symbol.for("app.foo")
+const foo = Symbol.for("app.foo")
+const bar = Symbol.for("app.bar")
+Symbol.keyFor(foo) === "app.foo"
+Symbol.keyFor(bar) === "app.bar"
+typeof foo === "symbol"
+typeof bar === "symbol"
+let obj = {}
+obj[foo] = "foo"
+obj[bar] = "bar"
+JSON.stringify(obj) // {}
+Object.keys(obj) // []
+Object.getOwnPropertyNames(obj) // []
+Object.getOwnPropertySymbols(obj) // [ foo, bar ]
+```
+## SETS
 * **A Set is a list of values with no duplicates**   
 [mdn: Set()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)   
 [mdn: WeakSet](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)   
@@ -607,7 +640,7 @@ randSet.delete(10);
 for (let val of randSet) console.log(`Set Val : ${val}`);
 ```
 
-### 14. MAPS
+## MAPS
 * **A Map is a collection of key/value pairs**   
 [mdn: Map()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map)   
 [mdn: WeakMap](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)   
@@ -629,7 +662,7 @@ randMap.forEach(function(value, key){
 });
 ```
 
-### 15. PROMISES
+## PROMISES
 * Promises define code that is to be executed later
 * Promises either succeed or fail once
 * They either are fulfilled, rejected, pending, or settled
