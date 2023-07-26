@@ -134,8 +134,6 @@ for (let val of array3) console.log(`Array Val : ${val}`);
 ```
 
 ### 7. Arrow Function 
-[mdn: Arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
-
 ```js
 function add(n1,n2) {
   return n1 + n2;
@@ -153,7 +151,7 @@ const result3 = (n1,n2) => {
 console.log(result3(30,40));
 ```
 
-* **using arrow function : forEach()**
+* **using arrow function : forEach()**   
 [mdn: Array.prototype.forEach()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 ```js
 const myArr = [10,30,50,60];
