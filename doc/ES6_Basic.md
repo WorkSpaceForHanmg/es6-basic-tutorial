@@ -131,6 +131,8 @@ obj = {
     }
 }
 ```
+<hr/>
+
 ## Spread Operator (...) 펼침연산자
 * ECMAScript 5
 ```js
@@ -161,6 +163,8 @@ arr5.push(20);
 console.log(arr5);
 console.log(arr);
 ```
+<hr/>
+
 ## Rest Parameter
 * ECMAScript 5
 ```js
@@ -191,6 +195,7 @@ function doMath(strings, ...values) {
 doMath`Add${10} ${20}`;
 doMath`Sub${10} ${20}`;
 ```
+<hr/>
 
 ## for-of   
 * **for-in, for-of, forEach**
@@ -213,6 +218,7 @@ for(let msg of msgs) {
 
 msgs.forEach(msg => console.log(msg));
 ```
+<hr/>
 
 ## ARRAYS
 [mdn: Array.from()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
@@ -230,6 +236,18 @@ let array3 = Array.from(array1, (value) => value * 2);
 // Iterate over values
 for (let val of array3) console.log(`Array Val : ${val}`);
 ```
+### Array Element Finding
+* ECMAScript 5
+```js
+[ 1, 3, 4, 2 ].filter(function (x) { return x > 3; })[0]; // 4
+// no equivalent in ES5
+```
+* ECMAScript 6
+```js
+[ 1, 3, 4, 2 ].find(x => x > 3) // 4
+[ 1, 3, 4, 2 ].findIndex(x => x > 3) // 2
+```
+<hr/>
 
 ## Arrow Function 
 ```js
@@ -296,8 +314,10 @@ const blackDog = new BlackDog();
 blackDog.bark(); // 검둥이 멍멍!
 blackDog.bark2(); //흰둥이 멍멍!
 ```
+<hr/>
 
-## String util function 
+## New Built In function 
+#### 1) String util function 
 [mdn: Array.prototype.startsWith()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith)   
 [mdn: Array.prototype.endsWith()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith)   
 
@@ -315,6 +335,17 @@ console.log(fName.endsWith("ek"));
 // Does it include
 console.log(fName.includes("ere"));
 ```
+#### 2) Number function
+```js
+console.log(Number.isNaN(42) === false)
+console.log(Number.isNaN(NaN) === true)
+console.log(Number.isSafeInteger(42) === true)
+console.log(Number.isSafeInteger(9007199254740992) === false)
+console.log(Math.trunc(42.7)) // 42
+console.log(Math.trunc( 0.1)) // 0
+console.log(Math.trunc(-0.1)) // -0
+```
+<hr/>
 
 ## Destructuring Assignment
 
