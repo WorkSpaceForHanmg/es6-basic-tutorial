@@ -868,6 +868,7 @@ p4.then((val) => console.log(`${val}`))
 
 ## Modules
 * export or import statement in a module to export or import variables, functions, classes 
+[ES6 Modules Import and Export](https://www.digitalocean.com/community/tutorials/js-modules-es6)
 
 * **export**
 ```js
