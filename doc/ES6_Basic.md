@@ -714,13 +714,20 @@ class Person {
   set name(name){
     if(name.startsWith('A')){
       this.setName(name);
+    }else {
+      console.log("Name은 A로 시작해야 합니다!")
     }
+    
   }
 }
 
 // Person 객체생성
 let person1 = new Person("aaa");
+console.log(person1._name); //undefined
 console.log(person1.getName());
+person1.name = 'Ablyn';
+console.log(person1.name);
+person1.name = 'Jane';
 console.log(person1.name);
 ```
 <hr/>
