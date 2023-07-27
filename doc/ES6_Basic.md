@@ -106,17 +106,22 @@ console.log(obj2);
 #### 2) Computed Property names
 * ECMAScript5
 ```js
+function quux() {
+  return "value";
+}
 var obj = {
     foo: "bar"
 };
 obj[ "baz" + quux() ] = 42;
+console.log(obj);
 ```
 * ECMAScript6
 ```js
-let obj = {
-    foo: "bar",
-    [ "baz" + quux() ]: 42
+var es6_obj = {
+  foo: "bar",
+  [ "baz" + quux() ] : 50
 }
+console.log(es6_obj);
 
 let myName = "name";
 const obj11 = {[myName]:name};
