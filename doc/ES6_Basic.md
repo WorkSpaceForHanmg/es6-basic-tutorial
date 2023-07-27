@@ -312,13 +312,16 @@ console.log(range('A'.charCodeAt(0), 'Z'.charCodeAt(0), 1))
 ### Array Element Finding
 * ECMAScript 5
 ```js
-[ 1, 3, 4, 2 ].filter(function (x) { return x > 3; })[0]; // 4
+const value = [ 1, 3, 4, 2, 5 ].filter(function (x) { return x > 3; })[0]; //[4,5] 4
+console.log(value);
 // no equivalent in ES5
 ```
 * ECMAScript 6
 ```js
-[ 1, 3, 4, 2 ].find(x => x > 3) // 4
-[ 1, 3, 4, 2 ].findIndex(x => x > 3) // 2
+const value2 = [ 1, 3, 4, 2 ].find(x => x > 3); // 4
+console.log(value2);
+const value3 = [ 1, 3, 4, 2 ].findIndex(x => x > 3); // 2
+console.log(value3);
 ```
 <hr/>
 
