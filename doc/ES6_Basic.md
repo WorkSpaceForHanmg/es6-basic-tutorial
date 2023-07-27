@@ -174,8 +174,11 @@ console.log(arr4);
 console.log(arr);
 
 ```
-* ECMAScript 6
+* ECMAScript 6 (Array에서 사용)
 ```js
+const odd = [1, 3, 5];
+const arr = [1, 2, 3, 4];
+
 const nums2 = [2, ...odd, 4, 6];
 console.log(nums2);
 const arr3 = [...arr];
@@ -186,6 +189,20 @@ const arr5 = [...arr];
 arr5.push(20);
 console.log(arr5);
 console.log(arr);
+```
+* ECMAScript 6 (Object에서 사용)
+```js
+const phone = {
+  home: '1234',
+  office: '4567'
+};
+
+const person = {
+  name:'둘리',
+  addr:'서울',
+  ...phone
+};
+console.log(person);
 ```
 <hr/>
 
