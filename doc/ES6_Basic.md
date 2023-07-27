@@ -451,13 +451,6 @@ console.log(`Val2 : ${val2}`);
 ```
 * **Object의 Destructuring Assignment**
 ```js
-const {a,b,...z} = {a:100,b:200,c:300,d:400};
-console.log(a);
-console.log(b);
-console.log(z);
-console.log(z.c);
-console.log(z.d);
-
 let obj = {p: 42, q: true};
 console.log(obj.p);
 console.log(obj.q);
@@ -465,6 +458,13 @@ console.log(obj.q);
 let {p,q} = {p: 42, q: true};
 console.log(p);
 console.log(q);
+
+const {a,b,...z} = {a:100,b:200,c:300,d:400};
+console.log(a);
+console.log(b);
+console.log(z);
+console.log(z.c);
+console.log(z.d);
 
 let person = {
   name:'React', 
@@ -501,6 +501,19 @@ console.log(home);
 console.log(office); 
 console.log(phone1);
 console.log(phone2);
+```
+```js
+class C {
+  a = 1;
+  autoBoundMethod = () => {
+    console.log(this.a);
+  };
+}
+
+const c = new C();
+c.autoBoundMethod(); // 1
+const { a, autoBoundMethod } = c;
+autoBoundMethod(); // 1
 ```
 <hr/>
 
