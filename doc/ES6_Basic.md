@@ -695,6 +695,7 @@ console.log(`${carl.getInfo()}`);
 ```
 
 * **private member**
+[mdn: Private class features](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields)
 ```js
 class Person {
   //생성자
