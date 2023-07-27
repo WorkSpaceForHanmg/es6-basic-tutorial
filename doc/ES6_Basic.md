@@ -581,6 +581,7 @@ console.log(getInfo());
 ## CLASSES
 * **Class Definition**
 ```js
+//포유류
 class Mammal{
   constructor(name){
     this._name = name;
@@ -643,7 +644,7 @@ chipmunk.getInfo2().namef2();
 ```js
 //Marsupial - 유대류는 포유류의 한 갈래
 class Marsupial extends Mammal{
-  constructor(name, hasPouch){
+  constructor(name, hasPouch=false){
     // Call the super class constructor
     super(name);
     this._hasPouch = hasPouch;
@@ -659,7 +660,7 @@ class Marsupial extends Mammal{
  
   // You can override methods
   getInfo(){
-    return `${super.name} is a marsupial`;
+    return `${super.name} is a marsupial ${this.hasPouch} `;
   }
  
 }
