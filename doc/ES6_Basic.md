@@ -529,6 +529,7 @@ function createAnimal(name, owner){
     getInfo(){
       return `${this.name} is owned by ${this.owner}`
     },
+    getInfo2: () => (`${this.name} is owned by ${this.owner}`),
     // Objects can contain other objects
     address: {
      street: '123 Main St',
@@ -541,6 +542,7 @@ var spot = createAnimal("Spot", "Doug");
  
 // Execute method
 console.log(`${spot.getInfo()}`);
+console.log(`${spot.getInfo2()}`); //undefined
  
 // Access object in the object
 console.log(`${spot.name} is at ${spot.address.street}`);
@@ -559,6 +561,20 @@ console.log(`Address : ${address.street}`);
 let { address: {street, city}} = spot;
 console.log(`Street : ${street}`);
 console.log(`City : ${city}`);
+```
+```js
+class CreateAnimal2 {
+    name="Spot";
+    owner="Doug";
+    // Create a method
+    getInfo = () => (`${this.name} is owned by ${this.owner}`);    
+}
+
+var spot2 = new CreateAnimal2();
+const {name,owner,getInfo} = spot2;
+console.log(`name = ${name}`);
+console.log(`owner = ${owner}`);
+console.log(getInfo());
 ```
 <hr/>
 
