@@ -51,7 +51,7 @@
 ```
 <hr/>
 
-### index.html
+### styles.css
 ```js
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
