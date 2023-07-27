@@ -22,6 +22,25 @@ function foo_let() {
 }
 foo_let();
 ```
+## const
+* primitive type
+```js
+const value = 20;
+value = 30;
+console.log(value);
+```
+* reference type (array, object)
+```js
+const myArr = ['aa','bb'];
+myArr.push('ccc');
+console.log(myArr);
+
+const myObj = {
+  value:30
+};
+myObj['value2'] = 40;
+console.log(myObj);
+```
 <hr/>
 
 ## Default Parameter Values
