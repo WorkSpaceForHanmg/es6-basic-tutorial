@@ -197,10 +197,15 @@ const phone = {
   office: '4567'
 };
 
+const phone2 = {
+  office: '7894'
+};
+
 const person = {
   name:'둘리',
   addr:'서울',
-  ...phone
+  ...phone,
+  ...phone2
 };
 console.log(person);
 ```
