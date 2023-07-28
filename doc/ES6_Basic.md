@@ -819,8 +819,8 @@ randMap.forEach(function(value, key){
 ## PROMISES
 * Promises define code that is to be executed later
 * Promises either succeed or fail once
-* They either are fulfilled, rejected, pending, or settled
-
+* They either are fulfilled, rejected, pending, or settled   
+[mdn:Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 ```js 
 // A Promise that is handled immediately
 var p1 = Promise.resolve('Resolve Me');
