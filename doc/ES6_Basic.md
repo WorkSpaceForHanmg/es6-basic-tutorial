@@ -819,7 +819,9 @@ randMap.delete("key3");
 console.log(`Map Size : ${randMap.size}`);
 randMap.clear();
 console.log(randMap.has("key3"));
+```
 
+```js
 let myMap = new Map([
   ["fname", "Chandler"],
   ["lname", "Bing"]
