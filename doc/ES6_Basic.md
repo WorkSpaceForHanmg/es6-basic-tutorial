@@ -674,7 +674,7 @@ console.log(`${chipmunk.getInfo()}`);
 console.log(`${kangaroo.getInfo()}`);
 ```
 
-* **You can dynamically inherit from Classes**
+* **You can dynamically Inherit from Classes**
 ```js
 function getClass(classType){
   if (classType == 1) {
@@ -734,7 +734,7 @@ console.log(person1.name);
 <hr/>
 
 ## Symbol Type
-* Unique and immutable data type to be used as an identifier for object properties. 
+* Unique and Immutable data type to be used as an identifier for object properties. 
 * Symbol can have an optional description, but for debugging purposes only.
 ```js
 Symbol("foo") !== Symbol("foo")
@@ -801,6 +801,7 @@ for (let val of randSet) console.log(`Set Val : ${val}`);
 var randMap = new Map();
 randMap.set("key1", "Random String");
 randMap.set("key2", 10);
+randMap.set("key3", 50);
  
 // Get values
 console.log(`key1 : ${randMap.get("key1")}`);
@@ -813,6 +814,11 @@ console.log(`Map Size : ${randMap.size}`);
 randMap.forEach(function(value, key){
   console.log(`${key} : ${value}`);
 });
+
+randMap.delete("key3");
+console.log(`Map Size : ${randMap.size}`);
+randMap.clear();
+console.log(randMap.has("key3"));
 ```
 <hr/>
 
