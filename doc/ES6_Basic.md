@@ -737,19 +737,32 @@ console.log(person1.name);
 * Unique and Immutable data type to be used as an identifier for object properties. 
 * Symbol can have an optional description, but for debugging purposes only.
 ```js
-Symbol("foo") !== Symbol("foo")
-const foo = Symbol()
-const bar = Symbol()
-typeof foo === "symbol"
-typeof bar === "symbol"
-let obj = {}
-obj[foo] = "foo"
-obj[bar] = "bar"
-JSON.stringify(obj) // {}
-Object.keys(obj) // []
-Object.getOwnPropertyNames(obj) // []
-Object.getOwnPropertySymbols(obj) // [ foo, bar ]
+let s = Symbol("First Symbol");
+console.log(typeof s);
+console.log(s.toString());
+
+let s2 = Symbol("Test");
+let s3 = Symbol("Test");
+console.log(s2===s3);
 ```
+
+```js
+console.log(Symbol("foo") !== Symbol("foo"));
+const foo = Symbol();
+const bar = Symbol();
+console.log(typeof foo === "symbol");
+console.log(typeof bar === "symbol");
+
+let obj = {};
+obj[foo] = "foo";
+obj[bar] = "bar";
+console.log(obj); // {Symbol():'foo', Symbol():'bar'}
+console.log(JSON.stringify(obj)); // {}
+console.log(Object.keys(obj)); // []
+console.log(Object.getOwnPropertyNames(obj)); // []
+console.log(Object.getOwnPropertySymbols(obj)); // [ Symbol(), Symbol() ]
+```
+
 ### Global Symbols
 ```js
 Symbol.for("app.foo") === Symbol.for("app.foo")
