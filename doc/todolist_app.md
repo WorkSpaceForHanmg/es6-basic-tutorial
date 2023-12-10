@@ -45,13 +45,13 @@
       </div>
       <div class="notification"></div>
     </div>
-    
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
 ```
 <hr/>
 
-### styles.css
+### src/css/styles.css
 ```js
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
@@ -205,7 +205,7 @@ header {
 ```
 <hr/>
 
-### main.js
+### src/main.js
 ```js
 
 // SELECT ELEMENTS
