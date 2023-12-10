@@ -912,8 +912,8 @@ p4.then((val) => console.log(`${val}`))
 [mdn: export](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export)   
 [ES6 Modules import and export](https://www.digitalocean.com/community/tutorials/js-modules-es6)
 
-* **export**
-```js
+* **named export**
+```js (main.js)
 let greet = "Hello World!";
 const PI = 3.14; 
 
@@ -923,7 +923,17 @@ function multiplyNumbers(a, b) {
 
 // Exporting variables and functions
 export { greet, PI, multiplyNumbers };
-```  
+```
+
+```js (main.js)
+export let greet = "Hello World!";
+export const PI = 3.14; 
+
+export function multiplyNumbers(a, b) {
+    return a * b;
+}
+```
+
 * **import**
 ```js
 import { greet, PI, multiplyNumbers } from './main.js';
@@ -933,3 +943,17 @@ alert(PI); // 3.14
 alert(multiplyNumbers(6, 15)); // 90
 ``` 
 
+* **default export**
+```js (moduleB.js)
+let greet = "Hello World!";
+
+export default greet;
+``` 
+
+* **import**
+```js
+import {default as f } from './moduleB.js'
+
+console.log(f);
+
+``` 
