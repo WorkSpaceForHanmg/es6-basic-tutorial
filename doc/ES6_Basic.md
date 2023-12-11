@@ -488,7 +488,7 @@ console.log(n1 + " " + n2 + " " + n3);
 // This can be used to switch values
 let val1 = 1, val2 = 2;
 [val1,val2] = [val2,val1];
-console.log(`Val2 : ${val2}`);
+console.log(`Val1 : ${val1}, Val2 : ${val2}`);
 ```
 * **Object의 Destructuring Assignment**
 ```js
@@ -555,6 +555,19 @@ const c = new C();
 c.autoBoundMethod(); // 1
 const { a, autoBoundMethod } = c;
 autoBoundMethod(); // 1
+```
+
+```js
+let {foo: x=3, bar: y} = {};
+console.log(x);  //3
+console.log(y);  //undefined
+```
+
+```js
+let [x, ...[y, z]] = ['a', 'b', 'c'];
+console.log(x);  //a
+console.log(y);  //b
+console.log(z);  //c
 ```
 <hr/>
 
@@ -702,9 +715,8 @@ class Marsupial extends Mammal{
   // You can override methods
   getInfo(){
     return `${super.name} is a marsupial ${this.hasPouch} `;
-  }
- 
-}
+  } 
+};
 
 // Marsupial 객체생성
 let kangaroo = new Marsupial("Paul", true);
@@ -753,6 +765,7 @@ class Person {
   get name() {
     return this.getName();
   }
+  // setter
   set name(name){
     if(name.startsWith('A')){
       this.setName(name);
