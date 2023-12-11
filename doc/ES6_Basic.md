@@ -22,6 +22,23 @@ function foo_let() {
 }
 foo_let();
 ```
+
+```js
+//함수 선언식 (호이스팅 되어진다.)
+function aa() {
+  return "aa1";
+}
+console.log(aa());  //bb1
+function aa() {
+  return "bb1";
+}
+
+//함수표현식(호이스팅 되지 않는다.)
+var cc = function() {
+  return "cc1";
+}
+console.log(cc());
+```
 ## const
 * primitive type
 ```js
