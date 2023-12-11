@@ -233,17 +233,19 @@ console.log(person);
 ```js
 function f (x, y) {
     var a = Array.prototype.slice.call(arguments, 2);
+    console.log(a);
     return (x + y) * a.length;
 };
-f(1, 2, "hello", true, 7) === 9;
+console.log(f(1, 2, "hello", true, 7) === 9);
 ```
 
 * ECMAScript 6
 ```js
 function f (x, y, ...a) {
+    console.log(a);
     return (x + y) * a.length
 }
-f(1, 2, "hello", true, 7) === 9
+console.log(f(1, 2, "hello", true, 7) === 9);
 ```
 
 * ECMAScript 6
