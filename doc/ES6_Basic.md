@@ -294,6 +294,7 @@ let array1 = Array.of(1,2,3);
  
 // Create an object into an array
 let array2 = Array.from("word");
+console.log(array2);
  
 // You can use Array.from to manipulate values
 let array3 = Array.from(array1, (value) => value * 2);
@@ -320,9 +321,13 @@ console.log(range(1, 10, 2));
 // [1, 3, 5, 7, 9]
 
 // Generate the alphabet using Array.from making use of it being ordered as a sequence
-//range('A'.charCodeAt(0), 'Z'.charCodeAt(0), 1) 결과값 [65,. 90]
-console.log(range('A'.charCodeAt(0), 'Z'.charCodeAt(0), 1))
-            .map(x => String.fromCharCode(x));
+//range('A'.charCodeAt(0), 'Z'.charCodeAt(0), 1) 결과값 [65, 90]
+const atoz = range('A'.charCodeAt(0), 'Z'.charCodeAt(0), 1)
+console.log(atoz);
+//[65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 
+//89, 90]
+const charAtoZ = atoz.map(x => String.fromCharCode(x));
+console.log(charAtoZ);
 // ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
 //"J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", 
 //"T", "U", "V", "W", "X", "Y", "Z"]
@@ -388,6 +393,10 @@ console.log(evenValue);
 //reduce(operator) (t1,t2) => t3
 const sum = myArr.reduce((prev,curr) => prev + curr);
 console.log(sum);
+
+const myStrArr = ['H','e','l','l','o'];
+const strValue = myStrArr.reduce((prev,curr) => prev + curr);
+console.log(strValue);
 ```
 
 * **Arrow function this**   
@@ -408,6 +417,19 @@ function BlackDog() {
 const blackDog = new BlackDog();
 blackDog.bark(); // 검둥이 멍멍!
 blackDog.bark2(); //흰둥이 멍멍!
+```
+
+```js
+const obj = {
+  i: 10,
+  b: () => console.log(this.i, this),
+  c() {
+    console.log(this.i, this);
+  },
+};
+
+obj.b(); // logs undefined, Window { /* … */ } (or the global object)
+obj.c(); // logs 10, Object { /* … */ }
 ```
 <hr/>
 
@@ -432,13 +454,13 @@ console.log(fName.includes("ere"));
 ```
 #### 2) Number function
 ```js
-console.log(Number.isNaN(42) === false)
-console.log(Number.isNaN(NaN) === true)
-console.log(Number.isSafeInteger(42) === true)
-console.log(Number.isSafeInteger(9007199254740992) === false)
-console.log(Math.trunc(42.7)) // 42
-console.log(Math.trunc( 0.1)) // 0
-console.log(Math.trunc(-0.1)) // -0
+console.log(Number.isNaN(42) === false);
+console.log(Number.isNaN(NaN) === true);
+console.log(Number.isSafeInteger(42) === true);
+console.log(Number.isSafeInteger(9007199254740992) === false);
+console.log(Math.trunc(42.7)); // 42
+console.log(Math.trunc( 0.1)); // 0
+console.log(Math.trunc(-0.1)); // -0
 ```
 <hr/>
 
