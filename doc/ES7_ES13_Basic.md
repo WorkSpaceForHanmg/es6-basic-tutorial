@@ -423,12 +423,16 @@ globalThis를 이용하면 모든 환경에서 접근 가능하다.
 #### 1) String.prototype.replaceAll()
 기존에 있던 replace에서 추가된 것으로 문자열에서 바꿀 문자를 모두 찾아 새로운 문자로 바꿔준다.  
 [mdn: String.prototype.replaceAll()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)   
+Before
+```js
+//RegExp(pattern, flags?) flags의 'g' 는 문자열 전체를 확인한다.
+let str = 'hotdog dog'.replace(new RegExp('dog','g'), 'cat');
+console.log(str) //output: hotcat cat
+```
 
 ```js
-const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
-
-console.log(p.replaceAll('dog', 'monkey'));
-//"The quick brown fox jumps over the lazy monkey. If the monkey reacted, was it really lazy?"
+let str = 'hotdog dog'.replaceAll('dog', 'cat');
+console.log(str) //output: hotcat cat
 ```
 #### 2) Promise.any()
 여러개의 promise 중에서 하나라도 resolve 되면 resovle 되어진다.   
@@ -469,4 +473,151 @@ const number = 1_000_000;
 const money = 1_000_000.123_456;
 const octal = 0o123_123;
 ```
+#### 5) Private class methods
+private 메서드 및 속성을 생성할 수 있습니다. 식별자로 해시(#)를 붙여야 합니다.
+```js
+class Auth {
+  #getToken() {
+   return "12345678";
+  }
+  isAuth() {
+   return this.#getToken();
+  }
+}
+const auth = new Auth();
+auth.getToken(); //output: auth.getToken is not a function
+auth.isAuth(); //output: 12345678
+```
 
+```js
+class Auth {
+   get #getToken() {
+    return localStorage.getItem('token');
+   }
+   set #setToken(token) {
+    localStorage.setItem('token', token);
+   }
+   set login(token) {
+    this.#setToken = token;
+   }
+   get isAuth() {
+    return this.#getToken;
+   }
+}
+let token = '12345678';
+const auth = new Auth();
+auth.login = token;
+auth.isAuth; //output: 12345678
+```
+
+## 7. ES13(2022)
+#### 1) Class Field Declarations
+* Before ES13
+```js
+class Car {
+  constructor() {
+    this.color = 'blue';
+    this.age = 2;
+  }
+}
+
+const car = new Car();
+console.log(car.color); // blue
+console.log(car.age); // 2
+```
+
+* ES13
+```js
+class Car {
+  color = 'blue';
+  age = 2;
+}
+
+const car = new Car();
+console.log(car.color); // blue
+console.log(car.age); // 2
+```
+
+#### 2) Private Methods and Fields
+```js
+class Person {
+  #firstName = 'Joseph';
+  #lastName = 'Stevens';
+
+  get name() {
+    return `${this.#firstName} ${this.#lastName}`;
+  }
+}
+
+const person = new Person();
+console.log(person.name);
+
+// SyntaxError: Private field '#firstName' must be
+// declared in an enclosing class
+console.log(person.#firstName);
+console.log(person.#lastName);
+```
+
+#### 3) Static Class Fields and Static Private Methods
+```js
+class Person {
+  static #count = 0;
+
+  static getCount() {
+    return this.#count;
+  }
+
+  constructor() {
+    this.constructor.#incrementCount();
+  }
+
+  static #incrementCount() {
+    this.#count++;
+  }
+}
+
+const person1 = new Person();
+const person2 = new Person();
+
+console.log(Person.getCount()); // 2
+```
+
+#### 4) Class static Block
+```js
+class Vehicle {
+  static defaultColor = 'blue';
+}
+
+class Car extends Vehicle {
+  static colors = [];
+
+  static {
+    this.colors.push(super.defaultColor, 'red');
+  }
+
+  static {
+    this.colors.push('green');
+  }
+}
+
+console.log(Car.colors); // [ 'blue', 'red', 'green' ]
+```
+
+#### 5) at() Method for Indexing
+```js
+const arr = ['a', 'b', 'c', 'd'];
+
+// 1st element from the end
+console.log(arr[arr.length - 1]); // d
+
+// 2nd element from the end
+console.log(arr[arr.length - 2]); // c
+
+const str = 'Coding Beauty';
+console.log(str.at(-1)); // y
+console.log(str.at(-2)); // t
+
+const typedArray = new Uint8Array([16, 32, 48, 64]);
+console.log(typedArray.at(-1)); // 64
+console.log(typedArray.at(-2)); // 48
+```
