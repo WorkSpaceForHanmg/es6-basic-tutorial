@@ -10,7 +10,7 @@ const it = numbers.values() // 이터레이터 생성
 values 메서드를 사용하여 Iterator를 생성하였다.  
 next를 사용 할 때 마다 그 다음 값으로 넘어 가며 모든 값을 순회하고 나면 done이 true로 나오며 끝난다.   
 한번 끝난 Iterator는 다시 돌아 가지 않으며 value가 undefined로 리턴 한다.   
-이 때문에 for of 루프가 가능한 것이며 일반 오브젝트가 루프를 순회 할 수 없는 이유이기도 하다.   
+이 때문에 for~of 루프가 가능한 것이며 일반 오브젝트가 루프를 순회 할 수 없는 이유이기도 하다.   
 오브젝트를 for~of로 루프를 순회하려고 하면 `obj is not iterable` 에러가 나온다.    
 ```js
 const myObj = { a: 1, b: 2 };
@@ -22,7 +22,7 @@ for (item of myObj) {
 // TypeError: myObj is not iterable
 ```
 
-for of문을 구현해 보면 아래와 같다.   
+for~of문을 구현해 보면 아래와 같다.   
 ```js
 const numbers = [1, 2, 3];
 
@@ -42,7 +42,7 @@ for (let val of numbers) {
 while문과 for-of 문은 동일한 동작을 한다.   
 Iterable Object란 반복 가능한 오브젝트를 의미하여, Iterator란 이러한 반복을 정의한 규약이라고 할 수 있다.   
 이 두가지를 포함한 개념을 이터레이션 프로토콜 이라 한다.   
-Iterator란 프로토콜의 하나이므로 일반 오브젝트에 이터레이터 프로토콜을 적용하면 Iterable 오브젝트로 만들 수 있다.      
+Iterator란 프로토콜의 하나이므로 일반 오브젝트에 Iterator 프로토콜을 적용하면 Iterable 오브젝트로 만들 수 있다.      
 이때 사용되는 것이 `Symbol.iterator`이다.   
 Iterable 오브젝트로 만들려면 `Symbol.iterator`와 `value, done`이 포함된 오브젝트를 반환하는 `next 메서드`를 가진   
 객체를 반환하면 된다.   
@@ -54,14 +54,14 @@ const arr = [1, 2, 3];
 const iterableObj = arr[Symbol.iterator]();
 ```
 arr에는 일반적인 배열을 할당 하였고 iterableObj에는 Symbol.iterator를 호출하여 Iterator 오브젝트를 생성 하였다.   
-arr은 prototype이 `Array`이며 arr의 prototype을 확인 하면 `[[Prototype]]: Array(0)`   
+arr은 prototype이 `Array`이며 arr의 prototype은 `[[Prototype]]: Array(0)`   
 iterableObj는 `Array Iterator`라는 이터레이터 오브젝트이다.   
-iterableObj의 prototype을 확인 하면 `[[Prototype]]: Array Iterator`   
+iterableObj의 prototype은 `[[Prototype]]: Array Iterator`   
 
 **Iterable 오브젝트로 만들어서 랭킹을 기록하는 Class**   
-마라톤 대회에서 순서대로 우승한 사람들을 Class를 통해 기록하도록 만들었다.   
-Rank Class를 순회 하면서 순위를 보고 싶은데 Class는 루프를 순회 할 수 없어 순위를 찍을 수가 없다.   
-Array에 다시 집어넣거나 값에 직접 접근해야 할까? 이럴 때 활용 할 수 있는 것이 이터레이션 프로토콜이다.   
+마라톤 대회에서 순서대로 우승한 사람들을 Class를 통해 기록 하도록 만들었다.   
+Rank Class를 순회 하면서 순위를 보고 싶은데 Class는 루프를 순회 할 수 없어서 순위를 찍을 수가 없다.   
+Array에 다시 집어넣거나 값에 직접 접근해야 할까? 이럴 때 활용 할 수 있는 것이 Iterator 프로토콜이다.   
 우선 Symbol.iterrator 메서드를 추가하고 { value, done }을 리턴하는 next 메서드를 리턴하도록 만들면 된다.   
 
 **Rank 클래스 선언**
