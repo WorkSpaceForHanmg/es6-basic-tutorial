@@ -326,6 +326,9 @@ console.log(arr1.map(x => [x * 2]));
 console.log(arr1.flatMap(x => [x * 2]));
 // [2, 4, 6, 8]
 
+console.log(arr1.map(x => [[x * 2]]));
+//[[[2]], [[4]], [[6]], [[8]]]
+
 // 한 레벨만 평탄화됨
 console.log(arr1.flatMap(x => [[x * 2]]));
 // [[2], [4], [6], [8]]
@@ -409,7 +412,7 @@ console.log(message); // 0
 ```
 
 #### 3) globalThis
-기존에는 js 실행환경에 따라서 global 객체에 접근하느 방법이 달랐음   
+기존에는 js 실행환경에 따라서 global 객체에 접근하는 방법이 달랐음   
 브라우저에서는 window, self, frame 사용, Node에서는 global, Web Worker(Web Worker는 script 실행을 메인 쓰레드가 아니라 백그라운드 쓰레드에서 실행할 수 있도록 해주는 기술 입니다.)에서는 self를 통해서 접근 했었음.     
 globalThis를 이용하면 모든 환경에서 접근 가능하다.   
 [mdn: globalThis](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/globalThis)   
@@ -435,7 +438,7 @@ let str = 'hotdog dog'.replaceAll('dog', 'cat');
 console.log(str) //output: hotcat cat
 ```
 #### 2) Promise.any()
-여러개의 promise 중에서 하나라도 resolve 되면 resovle 되어진다.   
+여러개의 promise 중에서 하나라도 resolve 되면 resolve 되어진다.   
 [mdn : Promise.any()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)   
 
 ```js
