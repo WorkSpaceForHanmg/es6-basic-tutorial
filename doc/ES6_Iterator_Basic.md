@@ -10,8 +10,8 @@ const it = numbers.values() // 이터레이터 생성
 values 메서드를 사용하여 Iterator를 생성하였다.  
 next를 사용 할 때 마다 그 다음 값으로 넘어 가며 모든 값을 순회하고 나면 done이 true로 나오며 끝난다.   
 한번 끝난 Iterator는 다시 돌아 가지 않으며 value가 undefined로 리턴 한다.   
-이 때문에 for~of 루프가 가능한 것이며 일반 오브젝트가 루프를 순회 할 수 없는 이유이기도 하다.   
-오브젝트를 for~of로 루프를 순회하려고 하면 `obj is not iterable` 에러가 나온다.    
+이 때문에 for-of 루프가 가능한 것이며 일반 오브젝트가 루프를 순회 할 수 없는 이유이기도 하다.   
+오브젝트를 for-of로 루프를 순회하려고 하면 `obj is not iterable` 에러가 나온다.    
 ```js
 const myObj = { a: 1, b: 2 };
 
