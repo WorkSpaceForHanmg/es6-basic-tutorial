@@ -167,7 +167,7 @@ obj = {
     bar (x, y) {
         …
     },
-    *quux (x, y) {
+    quux (x, y) {
         …
     }
 }
@@ -544,16 +544,16 @@ console.log(phone1);
 console.log(phone2);
 ```
 ```js
-class C {
+class MyClass {
   a = 1;
   autoBoundMethod = () => {
     console.log(this.a);
   };
 }
 
-const c = new C();
-c.autoBoundMethod(); // 1
-const { a, autoBoundMethod } = c;
+const myClass = new MyClass();
+myClass.autoBoundMethod(); // 1
+const { a, autoBoundMethod } = myClass;
 autoBoundMethod(); // 1
 ```
 
