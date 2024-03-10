@@ -553,6 +553,7 @@ class MyClass {
 
 const myClass = new MyClass();
 myClass.autoBoundMethod(); // 1
+
 const { a, autoBoundMethod } = myClass;
 autoBoundMethod(); // 1
 ```
@@ -616,6 +617,7 @@ let { address: {street, city}} = spot;
 console.log(`Street : ${street}`);
 console.log(`City : ${city}`);
 ```
+
 ```js
 class CreateAnimal2 {
     name="Spot";
@@ -625,7 +627,7 @@ class CreateAnimal2 {
 }
 
 var spot2 = new CreateAnimal2();
-const {name,owner,getInfo} = spot2;
+const { name,owner,getInfo } = spot2;
 console.log(`name = ${name}`);
 console.log(`owner = ${owner}`);
 console.log(getInfo());
@@ -761,6 +763,7 @@ class Person {
       return _name;
     }
   }
+  
   // getter
   get name() {
     return this.getName();
