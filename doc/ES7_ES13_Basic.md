@@ -334,7 +334,7 @@ console.log(arr1.flatMap(x => [[x * 2]]));
 // [[2], [4], [6], [8]]
 ```
 ## 5. ES11(2020)
-#### 1) Optional chaining
+#### 1) Optional Chaining
 참조를 할 때 값이 있는 지 없는 지 검증할 때 Optional chaining을 쓰면 참조가 null or undefined일 때 에러 대신 undefined를 반환해 준다.   
 [mdn: Optional chaining (?.)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)   
 
@@ -387,8 +387,8 @@ function printClass(person){
 printClass(person); //sports
 printClass(person2); //undefined
 ```
-#### 2) Nullish coalescing Operator
-주로 기본값을 할당할 떄 || 연산자를 활용했음 ! BUT, 0,' ' 같은 값들이 들어갈 때 의도대로 작동하지 않을 수 있음   
+#### 2) Nullish Coalescing Operator
+주로 기본값을 할당할 떄 || 연산자를 활용했음  그러나 0,' ' 같은 값들이 들어갈 때 의도대로 작동하지 않을 수 있음   
 [mdn: nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
 ```js
 const name =""
@@ -409,6 +409,14 @@ console.log(userName); // ""
 const num = 0;
 const message = num ?? 'undefined';
 console.log(message); // 0
+
+const email = undefined
+const emailValue = email ?? 'aa@bb.com';
+console.log(emailValue); // "aa@bb.com"
+
+const addr = null
+const addrValue = addr ?? 'Korea';
+console.log(addrValue); // "Korea"
 ```
 
 #### 3) globalThis
