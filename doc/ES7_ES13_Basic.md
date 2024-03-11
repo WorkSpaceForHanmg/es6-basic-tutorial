@@ -434,13 +434,14 @@ globalThis를 이용하면 모든 환경에서 접근 가능하다.
 #### 1) String.prototype.replaceAll()
 기존에 있던 replace에서 추가된 것으로 문자열에서 바꿀 문자를 모두 찾아 새로운 문자로 바꿔준다.  
 [mdn: String.prototype.replaceAll()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)   
+
 Before
 ```js
 //RegExp(pattern, flags?) flags의 'g' 는 문자열 전체를 확인한다.
 let str = 'hotdog dog'.replace(new RegExp('dog','g'), 'cat');
 console.log(str) //output: hotcat cat
-```
-
+```   
+After
 ```js
 let str = 'hotdog dog'.replaceAll('dog', 'cat');
 console.log(str) //output: hotcat cat
