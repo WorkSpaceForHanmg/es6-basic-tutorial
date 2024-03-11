@@ -993,11 +993,11 @@ export function multiplyNumbers(a, b) {
 
 * **import**
 ```js
-import { greet, PI, multiplyNumbers } from './main.js';
+import { greet, PI, multiplyNumbers as multiply } from './main.js';
 
 alert(greet); // Hello World!
 alert(PI); // 3.14
-alert(multiplyNumbers(6, 15)); // 90
+alert(multiply(6, 15)); // 90
 ``` 
 
 * **default export**
@@ -1008,6 +1008,20 @@ export default greet;
 ``` 
 
 * **import**
+```js
+import greet from './moduleB.js'
+
+console.log(greet);
+
+```
+
+```js
+import hello from './moduleB.js'
+
+console.log(hello);
+
+```
+
 ```js
 import {default as f } from './moduleB.js'
 
