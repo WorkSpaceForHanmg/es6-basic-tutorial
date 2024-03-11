@@ -85,7 +85,7 @@ let padString = ' ';
 
 console.log(name.padStart(targetLength, padString)); // 앞
 console.log(name.padEnd(targetLength, padString)); // 뒤
-//targetLength : 목표 문자열 길이, 현자 문자열의 길이보다 작다면 값 그대로 반환
+//targetLength : 목표 문자열 길이, 현재 문자열의 길이보다 작다면 값 그대로 반환
 //padString: 현재 문자열에 채워넣을 다른 문자열. 기본값은 ""
 //return 값 : 바뀐 문자열
 
@@ -288,7 +288,7 @@ console.log(greeting.trimEnd());
 // expected output: '   Hello world!';
 ```
 #### 5) Array.prototype.flat()
-flat() 메서드는 모든 하위 배열 요소를 지정한 깊이까지 재귀적으로 이어붙인 새로운 배열을 생성합니다. 
+flat() 메서드는 모든 하위 배열 요소를 지정한 깊이까지 재귀적으로 이어붙인 새로운 배열을 생성합니다.   
 [mdn : flat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
 
 ```js
