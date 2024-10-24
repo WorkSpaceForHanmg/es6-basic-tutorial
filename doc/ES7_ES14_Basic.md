@@ -702,13 +702,19 @@ const months = ['January', 'February', 'March', 'April', 'May'];
 
 // 이전 방법
 const reversedMonths = months.reverse();
-console.log(months); // ['May', 'April', 'March', 'February', 'January']; // 원래 배열이 변경됨
-console.log(reversedMonths); // ['May', 'April', 'March', 'February', 'January'];
+console.log(months); 
+// ['May', 'April', 'March', 'February', 'January']; // 원래 배열이 변경됨
+
+console.log(reversedMonths); 
+// ['May', 'April', 'March', 'February', 'January'];
 
 // toReversed() 사용
 const reversedMonths = months.toReversed();
-console.log(months); // ['January', 'February', 'March', 'April', 'May']; // 원래 배열은 변경되지 않음
-console.log(reversedMonths); // ['May', 'April', 'March', 'February', 'January'];
+console.log(months); 
+// ['January', 'February', 'March', 'April', 'May']; // 원래 배열은 변경되지 않음
+
+console.log(reversedMonths);
+ // ['May', 'April', 'March', 'February', 'January'];
 ```
 
 * toSorted()
