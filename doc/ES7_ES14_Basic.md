@@ -633,3 +633,57 @@ const typedArray = new Uint8Array([16, 32, 48, 64]);
 console.log(typedArray.at(-1)); // 64
 console.log(typedArray.at(-2)); // 48
 ```
+
+## 8. ES14(2023)
+#### 1) Object.groupBy
+객체를 포함하고 있는 배열을 분류하는(categorize) 특정 키를 반환하는 함수를 전달해 줍니다.
+* ES14
+```js
+const inventory = [
+  { name: "asparagus", type: "vegetables", quantity: 5 },
+  { name: "bananas", type: "fruit", quantity: 0 },
+  { name: "goat", type: "meat", quantity: 23 },
+  { name: "cherries", type: "fruit", quantity: 5 },
+  { name: "fish", type: "meat", quantity: 22 },
+];
+
+function myCallback({ quantity }) {
+  return quantity > 5 ? "ok" : "restock";
+}
+
+const result2 = Object.groupBy(inventory, myCallback);
+```
+result2 결과 출력
+```js
+{
+    "restock": [
+        {
+            "name": "asparagus",
+            "type": "vegetables",
+            "quantity": 5
+        },
+        {
+            "name": "bananas",
+            "type": "fruit",
+            "quantity": 0
+        },
+        {
+            "name": "cherries",
+            "type": "fruit",
+            "quantity": 5
+        }
+    ],
+    "ok": [
+        {
+            "name": "goat",
+            "type": "meat",
+            "quantity": 23
+        },
+        {
+            "name": "fish",
+            "type": "meat",
+            "quantity": 22
+        }
+    ]
+}
+```
