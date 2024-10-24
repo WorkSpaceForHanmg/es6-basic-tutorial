@@ -638,53 +638,121 @@ console.log(typedArray.at(-2)); // 48
 #### 1) Object.groupBy
 하나의 배열을 조건에 따라 여러 개의 배열로 나누고 싶은 경우 groupBy메소드를 사용하면 쉽게 그룹을 나눌 수 있다.   
 객체를 포함하고 있는 배열을 분류하는(categorize) 특정 키를 반환하는 함수를 전달해 줍니다.
-* ES14
+
+* Before ES14
 ```js
-const inventory = [
-  { name: "asparagus", type: "vegetables", quantity: 5 },
-  { name: "bananas", type: "fruit", quantity: 0 },
-  { name: "goat", type: "meat", quantity: 23 },
-  { name: "cherries", type: "fruit", quantity: 5 },
-  { name: "fish", type: "meat", quantity: 22 },
+const fruits = [
+  { name: 'apple', quantity: 10 },
+  { name: 'banana', quantity: 20 },
+  { name: 'cherry', quantity: 10 }
 ];
 
-function myCallback({ quantity }) {
-  return quantity > 5 ? "ok" : "restock";
-}
-
-const result2 = Object.groupBy(inventory, myCallback);
+const groupedByQuantity = {};
+fruits.forEach(fruit => {
+  const key = fruit.quantity;
+  if (!groupedByQuantity[key]) {
+    groupedByQuantity[key] = [];
+  }
+  groupedByQuantity[key].push(fruit);
+});
+console.log(groupedByQuantity)
 ```
-result2 결과 출력
+
+결과 출력
 ```js
 {
-    "restock": [
-        {
-            "name": "asparagus",
-            "type": "vegetables",
-            "quantity": 5
-        },
-        {
-            "name": "bananas",
-            "type": "fruit",
-            "quantity": 0
-        },
-        {
-            "name": "cherries",
-            "type": "fruit",
-            "quantity": 5
-        }
-    ],
-    "ok": [
-        {
-            "name": "goat",
-            "type": "meat",
-            "quantity": 23
-        },
-        {
-            "name": "fish",
-            "type": "meat",
-            "quantity": 22
-        }
-    ]
+  '10': [{ name: 'apple', quantity: 10 }, { name: 'cherry', quantity: 10 }],
+  '20': [{ name: 'banana', quantity: 20 }]
 }
 ```
+
+* ES14
+```js
+const groupedByQuantity = Object.groupBy(fruits, fruit => fruit.quantity);
+console.log(groupedByQuantity);
+```
+
+#### 2) Temporal API
+Temporal API는 기존의 Date 객체보다 더욱 강력한 날짜 및 시간 처리를 제공합니다.
+
+* Before ES14
+```js
+const date = new Date('2024-10-30');
+console.log(date.getFullYear()); // 2024
+console.log(date.getMonth() + 1); // 10 (월은 0부터 시작)
+console.log(date.getDate()); // 30
+```
+
+* ES14
+```js
+const date = Temporal.PlainDate.from('2024-10-30');
+console.log(date.year); // 2024
+console.log(date.month); // 10
+console.log(date.day); // 30
+```
+
+#### 3) Array.toReversed(), Array.toSorted(), Array.toSliced(),   Array.with()
+toSpliced()메서드는 원본 배열을 변경하면서 요소를 삭제하는 splice() 메소드 대신 원본 배열을 변경하지 않고 요소가 삭제된 복사된 배열을 얻을 수 있습니다.   
+toSorted() 메서드는 원본 배열을 변경하면서 정렬하는 sort() 메소드 대신 원본 배열을 변경하지 않고 정렬이 가능합니다.   
+toReserved() 메소드는 원본 배열을 변경하지 않고 배열을 뒤집을 수 있습니다.   
+
+* toReversed()
+```js
+const months = ['January', 'February', 'March', 'April', 'May'];
+
+// 이전 방법
+const reversedMonths = months.reverse();
+console.log(months); // ['May', 'April', 'March', 'February', 'January']; // 원래 배열이 변경됨
+console.log(reversedMonths); // ['May', 'April', 'March', 'February', 'January'];
+
+// toReversed() 사용
+const reversedMonths = months.toReversed();
+console.log(months); // ['January', 'February', 'March', 'April', 'May']; // 원래 배열은 변경되지 않음
+console.log(reversedMonths); // ['May', 'April', 'March', 'February', 'January'];
+```
+
+* toSorted()
+```js
+const prime = [13, 7, 17, 2];
+
+// 이전 방법
+const sortPrime = prime.sort();
+console.log(prime); // [2, 7, 13, 17]; // 원래 배열이 변경됨
+console.log(sortPrime); // [2, 7, 13, 17];
+
+// toSorted() 사용
+const sortPrime = prime.toSorted();
+console.log(prime); // [13, 7, 17, 2]; // 원래 배열은 변경되지 않음
+console.log(sortPrime); // [2, 7, 13, 17];
+```
+
+* toSorted()
+```js
+const numbers = [1, 2, 3, 4, 5, 6];
+
+// 이전 방법
+const spliceNumbers = numbers.splice(4, 1);
+console.log(numbers); // [1, 2, 3, 4, 6]; // 원래 배열이 변경됨
+console.log(spliceNumbers); // [1, 2, 3, 4, 6];
+
+// toSpliced() 사용
+const sortPrime = prime.toSorted(4, 1);
+console.log(prime); // [1, 2, 3, 4, 5, 6]; // 원래 배열은 변경되지 않음
+console.log(sortPrime); // [1, 2, 3, 4, 6];
+```
+
+* with()
+```js
+const usernames = ['user1', 'user2', 'user3'];
+
+// 이전 방법
+usernames[1] = 'newUser';
+console.log(usernames); // ['user1', 'newUser', 'user3']
+
+// with() 사용
+const updatedUsernames = usernames.with(1, 'newUser');
+console.log(usernames); // ['user1', 'user2', 'user3'] // 원래 배열은 변경되지 않음
+console.log(updatedUsernames); // ['user1', 'newUser', 'user3']
+```
+
+
