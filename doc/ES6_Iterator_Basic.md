@@ -42,7 +42,7 @@ for (let val of numbers) {
 while문과 for-of 문은 동일한 동작을 한다.   
 Iterable Object란 반복 가능한 오브젝트를 의미하여, Iterator란 이러한 반복을 정의한 규약이라고 할 수 있다.   
 이 두가지를 포함한 개념을 이터레이션 프로토콜 이라 한다.   
-Iterator란 프로토콜의 하나이므로 일반 오브젝트에 Iterator 프로토콜을 적용하면 Iterable 오브젝트로 만들 수 있다.      
+Iterator란 프로토콜의 하나이므로 일반 오브젝트에 Iterator 프로토콜을 적용하면 Iterable 한 오브젝트로 만들 수 있다.      
 이때 사용되는 것이 `Symbol.iterator`이다.   
 Iterable 오브젝트로 만들려면 `Symbol.iterator`와 `value, done`이 포함된 오브젝트를 반환하는 `next 메서드`를 가진   
 객체를 반환하면 된다.   
