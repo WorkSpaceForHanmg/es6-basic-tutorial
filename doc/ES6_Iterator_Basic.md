@@ -54,7 +54,7 @@ const arr = [1, 2, 3];
 const iterableObj = arr[Symbol.iterator]();
 ```
 arr에는 일반적인 배열을 할당 하였고 iterableObj에는 Symbol.iterator를 호출하여 Iterator 오브젝트를 생성 하였다.   
-arr은 prototype이 `Array`이며 arr의 prototype은 `[[Prototype]]: Array(0)`   
+arr은 `Array`이며 arr의 prototype은 `[[Prototype]]: Array(0)`   
 iterableObj는 `Array Iterator`라는 이터레이터 오브젝트이다.   
 iterableObj의 prototype은 `[[Prototype]]: Array Iterator`   
 
