@@ -101,7 +101,7 @@ for (let ranking of marathonRanking) {
 3st winner is Gill
 4st winner is Muzi
 ```
-로그를 저장하고 순서대로 보거나 재귀를 활용하는 등 데이터를 다루는 곳에서는 Iterator는 매우 유용하게 쓰일 수 있다.   
+로그를 저장하고 순서대로 보거나 재귀를 활용하는 등의 순회하는 데이터를 다룰때 Iterator는 유용하게 사용할 수 있다.   
 
 ### 2. Iterable Object
 아래는 기본적인 Iterable 객체/타입들이다.   
