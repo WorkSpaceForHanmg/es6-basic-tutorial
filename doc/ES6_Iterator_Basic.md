@@ -59,8 +59,8 @@ iterableObj는 `Array Iterator`라는 이터레이터 오브젝트이다.
 iterableObj의 prototype은 `[[Prototype]]: Array Iterator`   
 
 **Iterable 오브젝트로 만들어서 랭킹을 기록하는 Class**   
-마라톤 대회에서 순서대로 우승한 사람들을 Class를 통해 기록 하도록 만들었다.   
-Rank Class를 순회 하면서 순위를 보고 싶은데 Class는 루프를 순회 할 수 없어서 순위를 찍을 수가 없다.   
+마라톤 대회에서 우승한 사람들의 순서를 Rank Class에 저장 하도록 만들었다.   
+Rank Object 를 순회 하면서 순위를 보고 싶은데 Object는 루프를 순회 할 수 없어서 순위를 찍을 수가 없다.   
 Array에 다시 집어넣거나 값에 직접 접근해야 할까? 이럴 때 활용 할 수 있는 것이 Iterator 프로토콜이다.   
 우선 Symbol.iterrator 메서드를 추가하고 { value, done }을 리턴하는 next 메서드를 리턴하도록 만들면 된다.   
 
