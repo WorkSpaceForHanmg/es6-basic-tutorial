@@ -332,6 +332,16 @@ console.log(arr1.map(x => [[x * 2]]));
 // 한 레벨만 평탄화됨
 console.log(arr1.flatMap(x => [[x * 2]]));
 // [[2], [4], [6], [8]]
+
+const arr1 = ["it's Sunny in", "", "California"];
+
+let result1 = arr1.map((x) => x.split(" "));
+console.log(result1);
+// [["it's","Sunny","in"],[""],["California"]]
+
+let result2 = arr1.flatMap((x) => x.split(" "));
+console.log(result2);
+// ["it's","Sunny","in", "", "California"]
 ```
 ## 5. ES11(2020)
 #### 1) Optional Chaining

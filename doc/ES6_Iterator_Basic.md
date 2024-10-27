@@ -101,6 +101,46 @@ for (let ranking of marathonRanking) {
 3st winner is Gill
 4st winner is Muzi
 ```
+
+**Rank 클래스 선언( values 메서드 포함 )**
+```js
+class Rank {
+  constructor() {
+    this.ranking = [];
+  }
+
+  add(winner) {
+    const rank = this.ranking.length + 1;
+    this.ranking.push({ winner, rank });
+  }
+
+  [Symbol.iterator]() {
+    return this.ranking.values();
+  }
+
+  values() {
+    return this.ranking.values();
+  }
+};
+
+const marathonRanking = new Rank();
+
+marathonRanking.add("John");
+marathonRanking.add("Lion");
+marathonRanking.add("Gill");
+marathonRanking.add("Muzi");
+
+const iterator = marathonRanking.values();
+let rankObj = iterator.next();
+
+while(!rankObj.done) {
+  console.log(rankObj);
+  const { winner, rank } = rankObj.value;
+  console.log(`이름 = ${winner} 순위 = ${rank}`)
+  rankObj = iterator.next();
+}
+```
+
 로그를 저장하고 순서대로 보거나 재귀를 활용하는 등의 순회하는 데이터를 다룰때 Iterator는 유용하게 사용할 수 있다.   
 
 ### 2. Iterable Object
